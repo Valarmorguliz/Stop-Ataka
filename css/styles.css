@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    font-family: "Roboto", Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.5; /* Увеличиваем читабельность текста */
+}
+
+.container {
+    max-width: 450px;
+    width: 100%;
+    margin: 20px auto; /* Добавляем отступ сверху и снизу */
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Скругляем углы контейнера */
+    overflow: hidden; /* Убираем выход элементов за границы */
+}
+
+header img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #007bff; /* Добавляем декоративную рамку */
+}
+
+.content {
+    padding: 20px;
+    box-sizing: border-box; /* Гарантирует, что padding не увеличивает ширину */
+}
+
+.content h1 {
+    font-size: 1.7em; /* Увеличиваем размер заголовка */
+    text-align: center; /* Выравниваем заголовок по центру */
+    color: #000000; /* Используем акцентный цвет */
+    margin-bottom: 15px;
+}
+
+.content p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-align: left;
+    color: #000000; /* Цвет текста */
+    font-weight: 400; /* Обычный текст (жирность 400) */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.8em;
+    background-color: #333;
+    color: #fff;
+    border-top: 3px solid #007bff; /* Добавляем рамку сверху */
+}
+
+.next-button {
+    display: flex; /* Используем flexbox */
+    align-items: center; /* Выравниваем по вертикали */
+    justify-content: center; /* Выравниваем по горизонтали */
+    width: 100%;
+    height: 60px; /* Можно изменять высоту, текст останется по центру */
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Добавляем тень кнопке */
+    transition:
+        background-color 0.3s,
+        transform 0.2s,
+        box-shadow 0.3s;
+    font-weight: bold; /* Подчёркиваем важность кнопки */
+}
+
+.next-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Увеличиваем кнопку при наведении */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
+    cursor: pointer; /* Указываем, что элемент кликабельный */
+}
+
+/* Анимация для текста внутри кнопки */
+.next-button span {
+    display: inline-block;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+        color: #ffcb00; /* Пульсирующий цвет */
+    }
+}
+
+/* Стили для надписи под кнопкой */
+.page-indicator {
+    font-size: 0.9em; /* Размер шрифта */
+    color: #555; /* Цвет надписи */
+    text-align: center;
+    margin-top: 10px; /* Расстояние от кнопки до надписи */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%; /* Делаем ширину контейнера меньше на маленьких экранах */
+    }
+
+    .content h1 {
+        font-size: 1.5em; /* Уменьшаем заголовок для небольших экранов */
+    }
+
+    .content p {
+        font-size: 0.9em; /* Уменьшаем текст */
+    }
+
+    .next-button {
+        font-size: 0.9em; /* Уменьшаем размер кнопки */
+    }
+
+    .page-indicator {
+        font-size: 0.8em; /* Уменьшаем размер шрифта надписи на маленьких экранах */
+    }
+}
