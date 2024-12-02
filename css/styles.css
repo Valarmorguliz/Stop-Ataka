@@ -112,7 +112,7 @@ footer {
 
 @media (max-width: 768px) {
     .container {
-        max-width: 70%; /* Для небольших планшетов ширина 70% */
+        max-width: 100%; /* Для небольших планшетов ширина 70% */
     }
 
     .content h1 {
