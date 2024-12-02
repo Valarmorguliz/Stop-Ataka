@@ -24,8 +24,18 @@ header img {
     height: auto;
 }
 
+img {
+    pointer-events: none; /* Отключает взаимодействие с изображением */
+    user-select: none; /* Запрещает выделение изображения */
+    -webkit-user-drag: none; /* Отключает перетаскивание изображения (для Safari и Chrome) */
+}
+
+
 .content {
-    padding: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 35px;
+
     box-sizing: border-box; /* Гарантирует, что padding не увеличивает ширину */
 }
 
@@ -51,9 +61,58 @@ header img {
     font-size: 1.3em;
     line-height: 1.6;
     text-align: left;
-    color: #8C124B; /* Новый цвет текста */
+    color: #8c124b; /* Новый цвет текста */
     font-weight: 400;
 }
+
+/* Абзацы с рамкой и фоном <p class="boxed"> */
+.content .boxed {
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    line-height: 1.6;
+    text-align: left;
+    color: #000000;
+    font-weight: 400;
+    padding: 15px; /* Внутренний отступ */
+    background-color: #faf6e6; /* Фон */
+    border: 2px solid #eeba2f; /* Рамка */
+    border-radius: 5px; /* Скругление углов */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+
+
+/* Обтекание изображения */
+.content img.float-left {
+    max-width: 50%; /* Максимальная ширина изображения */
+    height: auto;
+    margin: 10px 20px 10px 0; /* Отступы (справа больше, чтобы текст не прилипал) */
+    float: left; /* Размещение изображения слева */
+}
+
+.content img.float-right {
+    max-width: 50%; /* Максимальная ширина изображения */
+    height: auto;
+    margin: 10px 0 10px 20px; /* Отступы (слева больше, чтобы текст не прилипал) */
+    float: right; /* Размещение изображения справа */
+}
+
+
+/* Изображение в центре <img src="images.jpg" class="centered" > */
+.content img.centered {
+    display: block; /* Изображение ведет себя как блочный элемент */
+    margin: 20px auto; /* Горизонтальное и вертикальное центрирование */
+    max-width: 100%; /* Изображение адаптируется к ширине контейнера */
+    height: auto; /* Сохраняем пропорции изображения */
+    border-radius: 5px; /* Опционально: скругляем углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Опционально: добавляем тень */
+}
+
+
+
+
+
+
 
 footer {
     text-align: center;
@@ -137,3 +196,79 @@ footer {
         height: 50px; /* Уменьшаем высоту кнопки */
     }
 }
+
+/* Стили для списка */
+.icon-list {
+    list-style: none; /* Убираем стандартные маркеры списка */
+    padding: 0;
+    margin: 0;
+}
+
+.icon-list li {
+    display: flex; /* Располагаем элементы в строку */
+    align-items: center; /* Выравниваем по вертикали */
+    margin-bottom: 15px; /* Отступ между пунктами */
+}
+
+/* Стили для иконок */
+.list-icon {
+    width: 100px; /* Ширина иконки */
+    height: 100px; /* Высота иконки */
+    margin-right: 10px; /* Отступ справа от иконки */
+}
+
+
+/* Стили для формы */
+.form-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-container input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+.form-container textarea {
+    resize: vertical;
+}
+
+
