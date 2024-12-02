@@ -114,35 +114,12 @@ footer {
     .container {
         max-width: 100%; /* Для небольших планшетов ширина 70% */
     }
-
-    .content h1 {
-        font-size: 1.7em; /* Уменьшаем заголовок */
-    }
-
-    .content p {
-        font-size: 1.1em;
-    }
-
-    .next-button {
-        font-size: 0.9em;
-    }
-
-    .page-indicator {
-        font-size: 0.8em;
-    }
+    
 }
 
 @media (max-width: 480px) {
     .container {
         max-width: 100%; /* Для мобильных устройств ширина 100% */
-    }
-
-    .content h1 {
-        font-size: 1.7em; /* Уменьшаем заголовок на мобильных */
-    }
-
-    .content p {
-        font-size: 1.1em;
     }
 
     .next-button {
