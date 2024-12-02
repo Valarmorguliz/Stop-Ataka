@@ -10,40 +10,39 @@ body {
 }
 
 .container {
-    max-width: 500px;
+    max-width: 37%; /* По умолчанию ширина 40% для настольных компьютеров */
     width: 100%;
-    margin: 20px auto; /* Добавляем отступ сверху и снизу */
+    margin: 20px auto;
     background: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px; /* Скругляем углы контейнера */
+    border-radius: 8px;
     overflow: hidden; /* Убираем выход элементов за границы */
 }
 
 header img {
     width: 100%;
-    height: auto;    
+    height: auto;
 }
 
 .content {
     padding: 20px;
     box-sizing: border-box; /* Гарантирует, что padding не увеличивает ширину */
-    
 }
 
 .content h1 {
-    font-size: 1.7em; /* Увеличиваем размер заголовка */
-    text-align: center; /* Выравниваем заголовок по центру */
-    color: #000000; /* Используем акцентный цвет */
+    font-size: 1.7em; /* Размер заголовка по умолчанию */
+    text-align: center;
+    color: #000000;
     margin-bottom: 15px;
 }
 
 .content p {
     margin-bottom: 20px;
-    font-size: 1.1em; /* Увеличиваем размер заголовка */
+    font-size: 1.1em;
     line-height: 1.6;
     text-align: left;
-    color: #000000; /* Цвет текста */
-    font-weight: 500; /* Обычный текст (жирность 400) */
+    color: #000000;
+    font-weight: 500;
 }
 
 footer {
@@ -52,32 +51,31 @@ footer {
     font-size: 0.8em;
     background-color: #333;
     color: #fff;
-   
 }
 
 .next-button {
-    display: flex; /* Используем flexbox */
-    align-items: center; /* Выравниваем по вертикали */
-    justify-content: center; /* Выравниваем по горизонтали */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 60px; /* Можно изменять высоту, текст останется по центру */
+    height: 60px;
     background-color: #007bff;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); /* Добавляем тень кнопке */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
     transition:
         background-color 0.3s,
         transform 0.2s,
         box-shadow 0.3s;
-    font-weight: bold; /* Подчёркиваем важность кнопки */
+    font-weight: bold;
 }
 
 .next-button:hover {
     background-color: #0056b3;
-    transform: scale(1.05); /* Увеличиваем кнопку при наведении */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
-    cursor: pointer; /* Указываем, что элемент кликабельный */
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 /* Анимация для текста внутри кнопки */
@@ -93,37 +91,62 @@ footer {
     }
     50% {
         transform: scale(1.1);
-        color: #ffcb00; /* Пульсирующий цвет */
+        color: #ffcb00;
     }
 }
 
 /* Стили для надписи под кнопкой */
 .page-indicator {
-    font-size: 0.9em; /* Размер шрифта */
-    color: #555; /* Цвет надписи */
+    font-size: 0.9em;
+    color: #555;
     text-align: center;
-    margin-top: 10px; /* Расстояние от кнопки до надписи */
+    margin-top: 10px;
 }
 
 /* Адаптивность */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 50%; /* Для планшетов ширина 50% */
+    }
+}
+
 @media (max-width: 768px) {
     .container {
-        max-width: 90%; /* Делаем ширину контейнера меньше на маленьких экранах */
+        max-width: 70%; /* Для небольших планшетов ширина 70% */
     }
 
     .content h1 {
-        font-size: 1.5em; /* Уменьшаем заголовок для небольших экранов */
+        font-size: 1.5em; /* Уменьшаем заголовок */
     }
 
     .content p {
-        font-size: 0.9em; /* Уменьшаем текст */
+        font-size: 1em;
     }
 
     .next-button {
-        font-size: 0.9em; /* Уменьшаем размер кнопки */
+        font-size: 0.9em;
     }
 
     .page-indicator {
-        font-size: 0.8em; /* Уменьшаем размер шрифта надписи на маленьких экранах */
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%; /* Для мобильных устройств ширина 100% */
+    }
+
+    .content h1 {
+        font-size: 1.3em; /* Уменьшаем заголовок на мобильных */
+    }
+
+    .content p {
+        font-size: 0.9em;
+    }
+
+    .next-button {
+        font-size: 0.8em;
+        height: 50px; /* Уменьшаем высоту кнопки */
     }
 }
