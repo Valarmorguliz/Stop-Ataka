@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    max-width: 480px;
+    max-width: 500px;
     width: 100%;
     margin: 20px auto; /* Добавляем отступ сверху и снизу */
     background: #ffffff;
@@ -21,13 +21,13 @@ body {
 
 header img {
     width: 100%;
-    height: auto;
-    /*border-bottom: 2px solid #007bff; /* Добавляем декоративную рамку */
+    height: auto;    
 }
 
 .content {
     padding: 20px;
     box-sizing: border-box; /* Гарантирует, что padding не увеличивает ширину */
+    
 }
 
 .content h1 {
@@ -39,10 +39,11 @@ header img {
 
 .content p {
     margin-bottom: 20px;
+    font-size: 1.1em; /* Увеличиваем размер заголовка */
     line-height: 1.6;
     text-align: left;
     color: #000000; /* Цвет текста */
-    font-weight: 400; /* Обычный текст (жирность 400) */
+    font-weight: 500; /* Обычный текст (жирность 400) */
 }
 
 footer {
@@ -51,7 +52,7 @@ footer {
     font-size: 0.8em;
     background-color: #333;
     color: #fff;
-   /* border-top: 3px solid #007bff; /* Добавляем рамку сверху */
+   
 }
 
 .next-button {
