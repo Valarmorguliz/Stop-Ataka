@@ -6,16 +6,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    line-height: 1.5; /* Увеличиваем читабельность текста */
+    line-height: 1.5;
 }
 
 .container {
-    max-width: 37%; /* По умолчанию ширина 40% для настольных компьютеров */
+    max-width: 37%;
     width: 100%;
     margin: 20px auto;
     background: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Убираем выход элементов за границы */
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 header img {
@@ -24,20 +25,18 @@ header img {
 }
 
 img {
-    pointer-events: none; /* Отключает взаимодействие с изображением */
-    user-select: none; /* Запрещает выделение изображения */
-    -webkit-user-drag: none; /* Отключает перетаскивание изображения (для Safari и Chrome) */
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .content {
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-bottom: 35px;
-    box-sizing: border-box; /* Гарантирует, что padding не увеличивает ширину */
+    padding: 35px;
+    box-sizing: border-box;
 }
 
 .content h1 {
-    font-size: 1.7em; /* Размер заголовка по умолчанию */
+    font-size: 1.7em;
     text-align: center;
     color: #000000;
     margin-bottom: 15px;
@@ -52,54 +51,40 @@ img {
     font-weight: 400;
 }
 
-/* Новый стиль для выделенного текста  <p class="highlighted"> */
 .content .highlighted {
-    margin-bottom: 20px;
-    font-size: 1.3em;
-    line-height: 1.6;
-    text-align: left;
-    color: #8c124b; /* Новый цвет текста */
-    font-weight: 400;
+    color: #8c124b;
 }
 
-/* Абзацы с рамкой и фоном <p class="boxed"> */
 .content .boxed {
-    margin-bottom: 20px;
-    font-size: 1.3em;
-    line-height: 1.6;
-    text-align: left;
-    color: #000000;
-    font-weight: 400;
-    padding: 15px; /* Внутренний отступ */
-    background-color: #faf6e6; /* Фон */
-    border: 2px solid #eeba2f; /* Рамка */
-    border-radius: 5px; /* Скругление углов */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    padding: 15px;
+    background-color: #faf6e6;
+    border: 2px solid #eeba2f;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Обтекание изображения */
-.content img.float-left {
-    max-width: 50%; /* Максимальная ширина изображения */
+.content img.float-left,
+.content img.float-right {
+    max-width: 50%;
     height: auto;
-    margin: 10px 20px 10px 0; /* Отступы (справа больше, чтобы текст не прилипал) */
-    float: left; /* Размещение изображения слева */
+    margin: 10px 20px;
+}
+
+.content img.float-left {
+    float: left;
 }
 
 .content img.float-right {
-    max-width: 50%; /* Максимальная ширина изображения */
-    height: auto;
-    margin: 10px 0 10px 20px; /* Отступы (слева больше, чтобы текст не прилипал) */
-    float: right; /* Размещение изображения справа */
+    float: right;
 }
 
-/* Изображение в центре <img src="images.jpg" class="centered" > */
 .content img.centered {
-    display: block; /* Изображение ведет себя как блочный элемент */
-    margin: 20px auto; /* Горизонтальное и вертикальное центрирование */
-    max-width: 100%; /* Изображение адаптируется к ширине контейнера */
-    height: auto; /* Сохраняем пропорции изображения */
-    border-radius: 5px; /* Опционально: скругляем углы */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Опционально: добавляем тень */
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 footer {
@@ -119,12 +104,9 @@ footer {
     background-color: #8e0c4b;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 5px;    
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.9);
-    transition:
-        background-color 0.3s,
-        transform 0.2s,
-        box-shadow 0.3s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
     font-weight: bold;
 }
 
@@ -132,10 +114,12 @@ footer {
     background-color: #f19a29;
     transform: scale(1.05);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
 }
 
-/* Анимация для текста внутри кнопки */
+.next-button:focus {
+    outline: 2px solid #f19a29;
+}
+
 .next-button span {
     display: inline-block;
     animation: pulse 3.5s infinite ease-in-out;
@@ -143,8 +127,7 @@ footer {
 }
 
 @keyframes pulse {
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
     }
     50% {
@@ -153,7 +136,6 @@ footer {
     }
 }
 
-/* Стили для надписи под кнопкой */
 .page-indicator {
     font-size: 0.9em;
     color: #555;
@@ -161,51 +143,47 @@ footer {
     margin-top: 20px;
 }
 
-/* Адаптивность */
 @media (max-width: 1024px) {
     .container {
-        max-width: 50%; /* Для планшетов ширина 50% */
+        max-width: 50%;
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        max-width: 100%; /* Для небольших планшетов ширина 70% */
+        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        max-width: 100%; /* Для мобильных устройств ширина 100% */
+        max-width: 100%;
     }
 
     .next-button {
         font-size: 0.8em;
-        height: 50px; /* Уменьшаем высоту кнопки */
+        height: 50px;
     }
 }
 
-/* Стили для списка */
 .icon-list {
-    list-style: none; /* Убираем стандартные маркеры списка */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .icon-list li {
-    display: flex; /* Располагаем элементы в строку */
-    align-items: center; /* Выравниваем по вертикали */
-    margin-bottom: 15px; /* Отступ между пунктами */
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-/* Стили для иконок */
 .list-icon {
-    width: 100px; /* Ширина иконки */
-    height: 100px; /* Высота иконки */
-    margin-right: 10px; /* Отступ справа от иконки */
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
 }
 
-/* Стили для формы */
 .form-container {
     max-width: 500px;
     margin: 20px auto;
@@ -213,82 +191,4 @@ footer {
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-container label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-container input,
-.form-container textarea,
-.form-container button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.form-container input[type="radio"] {
-    width: auto;
-    margin-right: 5px;
-}
-
-.form-container button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-}
-
-.form-container button:hover {
-    background-color: #45a049;
-}
-
-.form-container textarea {
-    resize: vertical;
-}
-
-.google-form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 1900px; /* Высота окна просмотра */
-    margin: 0;
-    padding: 0;
-}
-
-.responsive-iframe {
-    width: 100%; /* Ширина на всю страницу */
-    height: 100%; /* Высота на всю страницу */
-    border: none; /* Убираем границу */
-    overflow: hidden; /* Убираем прокрутку */
-}
-
-
-
-/* Новый стиль для цитат */
-.content .quote-box {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-    line-height: 1.8;
-    text-align: left;
-    color: #333;
-    font-style: italic;
-    padding: 15px; /* Внутренний отступ */
-    background-color: #f9f9f9; /* Светло-серый фон */
-    border-left: 4px solid #4CAF50; /* Линия слева */
-    border-radius: 5px; /* Скругленные углы */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
 }

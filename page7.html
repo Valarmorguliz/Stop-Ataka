@@ -16,8 +16,9 @@
         <div class="container">
             <header>
                 <iframe
+                    loading="lazy"
                     width="100%"
-                    height="315"
+                    style="aspect-ratio: 16 / 9"
                     src="https://www.youtube.com/embed/qLohAmKymHM"
                     allow="autoplay; encrypted-media; picture-in-picture"
                     allowfullscreen
@@ -104,99 +105,57 @@
 
                 <h1 style="color: red">Запись на бесплатную консультацию</h1>
 
-                <!-- ВСТРАИВАЕМ ФОРМУ -->
-                <div class="form-container">
-                    <h2>Заполните форму</h2>
-                    <form id="data-form">
-                        <label for="name">Имя:</label>
-                        <input type="text" id="name" name="name" required />
+                <iframe
+                    data-tally-src="https://tally.so/embed/w7J8pz?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                    loading="lazy"
+                    width="100%"
+                    height="1081"
+                    title="Заявка на бесплатную консультацию"></iframe>
+                <script>
+                    var d = document,
+                        w = "https://tally.so/widgets/embed.js",
+                        v = function () {
+                            "undefined" != typeof Tally
+                                ? Tally.loadEmbeds()
+                                : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) {
+                                      e.src = e.dataset.tallySrc;
+                                  });
+                        };
+                    if ("undefined" != typeof Tally) v();
+                    else if (d.querySelector('script[src="' + w + '"]') == null) {
+                        var s = d.createElement("script");
+                        (s.src = w), (s.onload = v), (s.onerror = v), d.body.appendChild(s);
+                    }
+                </script>
 
-                        <label for="phone">Номер телефона:</label>
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            required
-                            pattern="^\\+?\\d{10,15}$"
-                            title="Введите корректный номер телефона" />
-
-                        <label for="age">Возраст:</label>
-                        <input type="number" id="age" name="age" required min="1" max="120" />
-
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required />
-
-                        <label>Выберите вариант ответа:</label>
-                        <div>
-                            <input type="radio" id="option1" name="question" value="Вариант 1" required />
-                            <label for="option1">Вариант 1</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="option2" name="question" value="Вариант 2" />
-                            <label for="option2">Вариант 2</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="option3" name="question" value="Вариант 3" />
-                            <label for="option3">Вариант 3</label>
-                        </div>
-
-                        <label for="message">Комментарий:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-
-                        <button type="submit">Отправить заявку</button>
-                    </form>
-
-                    
+                <div class="page-indicator">
+                    <small
+                        >Нажимая на кнопку, вы соглашаетесь с условиями о персональных данных и соглашаетесь c<br>
+                        <a href="privacy-policy.pdf">политикой конфиденциальности</a></small
+                    >
                 </div>
 
-                <div class="google-form-container">
-                        <iframe
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSdgPrWy-snuMCKL7nE6KINAv1v1CpX9xIt8fYidjfq7z8MjVA/viewform?embedded=true"
-                            class="responsive-iframe"
-                            title="Панические атаки: Правда, о которой мало кто говорит">
-                            Загрузка…
-                        </iframe>
-                    </div>
-                
-                <br />
-
-                <a href="page2.html" class="next-button"><span>Узнать все условия</span></a>
-                <div class="page-indicator">Теперь точно последняя страница</div>
-                <!-- Надпись под кнопкой -->
-                <br />
+         
             </div>
-            <footer>&copy; 2024 Стоп-Атака. Все права защищены.</footer>
+            <footer>&copy; 2024 Стоп-Атака. Все права защищены.<br /></footer>
         </div>
 
         <script>
-            document.getElementById("data-form").addEventListener("submit", async function (event) {
-                event.preventDefault();
+            // Получаем iframe
+            const iframe = document.querySelector(".responsive-iframe");
 
-                const formData = new FormData(event.target);
-                const data = Object.fromEntries(formData.entries());
+            // Функция для обновления высоты iframe
+            function resizeIframe() {
+                iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
+            }
 
-                const googleScriptURL = "ВАШ_URL_ВЕБ-ПРИЛОЖЕНИЯ";
+            // Слушаем загрузку и изменения внутри iframe
+            iframe.addEventListener("load", () => {
+                resizeIframe();
 
-                try {
-                    const response = await fetch(googleScriptURL, {
-                        method: "POST",
-                        body: JSON.stringify(data),
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    });
-
-                    const result = await response.json();
-                    if (result.success) {
-                        alert("Форма успешно отправлена!");
-                        event.target.reset();
-                    } else {
-                        alert("Ошибка при отправке формы.");
-                    }
-                } catch (error) {
-                    console.error("Ошибка:", error);
-                    alert("Не удалось отправить форму.");
-                }
+                // Следим за изменениями высоты
+                const observer = new MutationObserver(resizeIframe);
+                observer.observe(iframe.contentDocument.body, { attributes: true, childList: true, subtree: true });
             });
         </script>
     </body>
