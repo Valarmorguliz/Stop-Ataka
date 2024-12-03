@@ -15,7 +15,6 @@ body {
     margin: 20px auto;
     background: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /*border-radius: 8px;*/
     overflow: hidden; /* Убираем выход элементов за границы */
 }
 
@@ -30,12 +29,10 @@ img {
     -webkit-user-drag: none; /* Отключает перетаскивание изображения (для Safari и Chrome) */
 }
 
-
 .content {
     padding-left: 35px;
     padding-right: 35px;
     padding-bottom: 35px;
-
     box-sizing: border-box; /* Гарантирует, что padding не увеличивает ширину */
 }
 
@@ -80,8 +77,6 @@ img {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
 }
 
-
-
 /* Обтекание изображения */
 .content img.float-left {
     max-width: 50%; /* Максимальная ширина изображения */
@@ -97,7 +92,6 @@ img {
     float: right; /* Размещение изображения справа */
 }
 
-
 /* Изображение в центре <img src="images.jpg" class="centered" > */
 .content img.centered {
     display: block; /* Изображение ведет себя как блочный элемент */
@@ -107,12 +101,6 @@ img {
     border-radius: 5px; /* Опционально: скругляем углы */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Опционально: добавляем тень */
 }
-
-
-
-
-
-
 
 footer {
     text-align: center;
@@ -217,7 +205,6 @@ footer {
     margin-right: 10px; /* Отступ справа от иконки */
 }
 
-
 /* Стили для формы */
 .form-container {
     max-width: 500px;
@@ -271,4 +258,37 @@ footer {
     resize: vertical;
 }
 
+.google-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 1900px; /* Высота окна просмотра */
+    margin: 0;
+    padding: 0;
+}
 
+.responsive-iframe {
+    width: 100%; /* Ширина на всю страницу */
+    height: 100%; /* Высота на всю страницу */
+    border: none; /* Убираем границу */
+    overflow: hidden; /* Убираем прокрутку */
+}
+
+
+
+/* Новый стиль для цитат */
+.content .quote-box {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    line-height: 1.8;
+    text-align: left;
+    color: #333;
+    font-style: italic;
+    padding: 15px; /* Внутренний отступ */
+    background-color: #f9f9f9; /* Светло-серый фон */
+    border-left: 4px solid #4CAF50; /* Линия слева */
+    border-radius: 5px; /* Скругленные углы */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}

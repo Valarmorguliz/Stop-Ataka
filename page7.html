@@ -75,24 +75,30 @@
                 </p>
 
                 <p>Я тебе точно не помогу.</p>
-                
+
                 <p><span style="color: red">Кому я могу помочь:</span></p>
-                
+
                 <ul>
                     <li>
-                    <p>Тем, кто берёт ответственность за свою жизнь и готов действовать.</p>
+                        <p>Тем, кто берёт ответственность за свою жизнь и готов действовать.</p>
                     </li>
                     <li>
-                    <p>Тем, кто твёрдо намерен навсегда избавиться от панических атак и состояний, которые ограничивают их свободу.</p>
+                        <p>
+                            Тем, кто твёрдо намерен навсегда избавиться от панических атак и состояний, которые
+                            ограничивают их свободу.
+                        </p>
                     </li>
                     <li>
-                    <p>Мечтает вернуться к активной, свободной и насыщенной жизни.</p>
+                        <p>Мечтает вернуться к активной, свободной и насыщенной жизни.</p>
                     </li>
                     <li>
-                    <p>Тем, кто не боится перемен и готов меняться ради лучшей жизни.</p>
+                        <p>Тем, кто не боится перемен и готов меняться ради лучшей жизни.</p>
                     </li>
                     <li>
-                    <p>Тем, кто понимает ценность профессиональной помощи и готов вкладывать силы, время и деньги в себя.</p>
+                        <p>
+                            Тем, кто понимает ценность профессиональной помощи и готов вкладывать силы, время и деньги в
+                            себя.
+                        </p>
                     </li>
                 </ul>
 
@@ -122,42 +128,36 @@
 
                         <label>Выберите вариант ответа:</label>
                         <div>
-                            <input
-                                type="radio"
-                                id="option1"
-                                name="question"
-                                value="Вариант 1"
-                                required />
+                            <input type="radio" id="option1" name="question" value="Вариант 1" required />
                             <label for="option1">Вариант 1</label>
                         </div>
                         <div>
-                            <input
-                                type="radio"
-                                id="option2"
-                                name="question"
-                                value="Вариант 2" />
+                            <input type="radio" id="option2" name="question" value="Вариант 2" />
                             <label for="option2">Вариант 2</label>
                         </div>
                         <div>
-                            <input
-                                type="radio"
-                                id="option3"
-                                name="question"
-                                value="Вариант 3" />
+                            <input type="radio" id="option3" name="question" value="Вариант 3" />
                             <label for="option3">Вариант 3</label>
                         </div>
 
                         <label for="message">Комментарий:</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="4"
-                            required></textarea>
+                        <textarea id="message" name="message" rows="4" required></textarea>
 
                         <button type="submit">Отправить заявку</button>
                     </form>
+
+                    
                 </div>
 
+                <div class="google-form-container">
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSdgPrWy-snuMCKL7nE6KINAv1v1CpX9xIt8fYidjfq7z8MjVA/viewform?embedded=true"
+                            class="responsive-iframe"
+                            title="Панические атаки: Правда, о которой мало кто говорит">
+                            Загрузка…
+                        </iframe>
+                    </div>
+                
                 <br />
 
                 <a href="page2.html" class="next-button"><span>Узнать все условия</span></a>
@@ -182,8 +182,8 @@
                         method: "POST",
                         body: JSON.stringify(data),
                         headers: {
-                            "Content-Type": "application/json",
-                        },
+                            "Content-Type": "application/json"
+                        }
                     });
 
                     const result = await response.json();
