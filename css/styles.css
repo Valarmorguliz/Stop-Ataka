@@ -42,10 +42,17 @@ img {
     margin-bottom: 15px;
 }
 
+.content h2 {
+    font-size: 1.5em;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
 .content p {
     margin-bottom: 20px;
-    font-size: 1.3em;
-    line-height: 1.6;
+    font-size: 1.2em;
+    line-height: 1.5;
     text-align: left;
     color: #000000;
     font-weight: 400;
@@ -91,8 +98,8 @@ footer {
     text-align: center;
     padding: 10px 0;
     font-size: 0.8em;
-    background-color: #333;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .next-button {
