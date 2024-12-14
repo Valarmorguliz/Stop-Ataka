@@ -1,201 +1,136 @@
+/* Отключение выделения для всего документа */
 body {
-    margin: 0;
-    font-family: "Roboto", Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.5;
+  user-select: none; /* Отключает выделение текста */
+  -webkit-user-select: none; /* Для Safari и старых версий Chrome */
+  -moz-user-select: none;    /* Для старых версий Firefox */
+  -ms-user-select: none;     /* Для старых версий Internet Explorer */
 }
 
-.container {
-    max-width: 37%;
-    width: 100%;
-    margin: 20px auto;
-    background: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-header img {
-    width: 100%;
-    height: auto;
-}
-
+/* Отключение перетаскивания изображений */
 img {
-    pointer-events: none;
-    user-select: none;
-    -webkit-user-drag: none;
+  pointer-events: none; /* Отключает взаимодействие с изображениями */
+  -webkit-user-drag: none; /* Отключает перетаскивание изображений для Safari и старых версий Chrome */
 }
 
+.centered {
+  display: block;
+  margin: 20px auto;       /* Центрирование по горизонтали */
+  max-width: 100%;         /* Ограничение ширины по контейнеру */
+  height: auto;            /* Сохранение пропорций */
+  border-radius: 15px;     /* Скругление углов на 15 пикселей */
+}
+
+/* Добавим стиль для изображения */
+.hero-image {
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+}
+
+/* Стиль для текстового блока */
 .content {
-    padding: 35px;
-    box-sizing: border-box;
+  padding: 30px 30px 10px 30px;
 }
 
-.content h1 {
-    font-size: 1.7em;
-    text-align: center;
-    color: #000000;
-    margin-bottom: 15px;
+/* Стиль для колонки с рамкой и тенью */
+.column-wrapper {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.content h2 {
-    font-size: 1.5em;
-    text-align: center;
-    color: #000000;
-    margin-bottom: 15px;
-}
-
-.content p {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-    line-height: 1.5;
-    text-align: left;
-    color: #000000;
-    font-weight: 400;
-}
-
-.content .highlighted {
-    color: #8c124b;
-}
-
-.content .boxed {
-    padding: 15px;
-    background-color: #faf6e6;
-    border: 2px solid #eeba2f;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.content img.float-left,
-.content img.float-right {
-    max-width: 50%;
-    height: auto;
-    margin: 10px 20px;
-}
-
-.content img.float-left {
-    float: left;
-}
-
-.content img.float-right {
-    float: right;
-}
-
-.content img.centered {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    font-size: 0.8em;
-    background-color: #ffffff;
-    color: #000000;
-}
-
+/* Кнопка - стиль .next-button */
 .next-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 60px;
-    background-color: #8e0c4b;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;    
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.9);
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-    font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  background-color: #8e0c4b;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.9);
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  font-weight: bold;
 }
 
 .next-button:hover {
-    background-color: #f19a29;
-    transform: scale(1.05);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  background-color: #f19a29;
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 .next-button:focus {
-    outline: 2px solid #f19a29;
+  outline: 2px solid #f19a29;
 }
 
-.next-button span {
-    display: inline-block;
-    animation: pulse 3.5s infinite ease-in-out;
-    font-size: 1.6em;
+/* Кнопка - выравнивание по центру */
+.btn-container {
+  text-align: center;
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-        color: rgb(22, 34, 175);
-    }
+/* Стиль для текста под кнопкой */
+.page-info {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 20px;
 }
 
-.page-indicator {
-    font-size: 0.9em;
-    color: #555;
-    text-align: center;
-    margin-top: 20px;
+/* Стиль для футера */
+.footer {
+  background-color: #ffffff;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6c757d; /* Цвет текста футера */
 }
 
-@media (max-width: 1024px) {
-    .container {
-        max-width: 50%;
-    }
+p {
+  font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-    }
+/* Стили для ссылок на почту */
+.footer a.email-link {
+  color: #007bff;
+  text-decoration: none;
 }
 
-@media (max-width: 480px) {
-    .container {
-        max-width: 100%;
-    }
-
-    .next-button {
-        font-size: 0.8em;
-        height: 50px;
-    }
+.footer a.email-link:hover {
+  text-decoration: underline;
 }
 
-.icon-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Центрирование заголовков */
+h1,
+h2 {
+  text-align: center;
 }
 
-.icon-list li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+.content .highlighted {
+  color: #8c124b;
 }
 
-.list-icon {
-    width: 100px;
-    height: 100px;
-    margin-right: 10px;
+/* Обертка для адаптивного видео */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Соотношение сторон 16:9 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000; /* Фон для затемнения при загрузке */
+  border-radius: 10px; /* Скругление углов */
+  margin: 20px 0; /* Отступы сверху и снизу */
 }
 
-.form-container {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Стили для iframe */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px; /* Скругление углов для iframe */
 }

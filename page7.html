@@ -1,162 +1,231 @@
 <!doctype html>
 <html lang="ru">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-            rel="stylesheet" />
-        <title>Стоп-Атака</title>
-        <link rel="stylesheet" href="css/styles.css" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Пример страницы в стиле Bootstrap с картинкой, текстом и кнопкой" />
+        <meta name="author" content="Ваше имя" />
+        <title>Пример страницы</title>
+
         <!-- Подключение стилей -->
-        <script src="js/script.js" defer></script>
-        <!-- Подключение скрипта -->
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <!-- Подключение стилей Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     </head>
+
     <body>
-        <div class="container">
-            <header>
-                <iframe
-                    loading="lazy"
-                    width="100%"
-                    style="aspect-ratio: 16 / 9"
-                    src="https://rutube.ru/play/embed/3bf22532fd69f0ba8b5acda56f93cca1"
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                    allowfullscreen
-                    title="Панические атаки: Правда, о которой мало кто говорит">
-                </iframe>
-                
-                
-            </header>
-            <div class="content">
-                <h2>Как мы будем работать:</h2>
+        <div class="container mt-2">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-5 column-wrapper">
+                    <div class="video-container" style="height: 550px; position: relative">
+                        <iframe
+                            style="width: 100%; height: 100%; border: none"
+                            src="https://rutube.ru/play/embed/3bf22532fd69f0ba8b5acda56f93cca1"
+                            allow="autoplay; encrypted-media; picture-in-picture"
+                            allowfullscreen
+                            title="Видеоотзыв Илины">
+                        </iframe>
+                    </div>
 
-                <ul class="icon-list">
-                    <li>
-                        <img src="images/icons/icon1.png" alt="Icon 1" class="list-icon" />
-                        <span
-                            ><strong>Посмотри видео </strong>⬆️⬆️⬆️<br />
-                            Ответы на многие твои вопросы есть в видео.
-                        </span>
-                    </li>
-                    <li>
-                        <img src="images/icons/icon2.png" alt="Icon 2" class="list-icon" />
-                        <span
-                            ><strong>Оставь заявку</strong><br />
-                            Я свяжусь с тобой по указанным данным для уточнения даты и времени проведения консультации.
-                        </span>
-                    </li>
-                    <li>
-                        <img src="images/icons/icon3.png" alt="Icon 3" class="list-icon" />
-                        <span
-                            ><strong>Пройди бесплатную консультацию</strong><br />
-                            Проводится онлайн в Telegram, WhatsApp, Viber или Skype.
-                        </span>
-                    </li>
-                    <li>
-                        <img src="images/icons/icon4.png" alt="Icon 3" class="list-icon" />
-                        <span
-                            ><strong
-                                >Возьми 100 % ответственность за свою жизнь и измени её с помощью моей авторской
-                                программы "Стоп-Атака"</strong
-                            ><br />
-                            Вместе мы работаем 50/50: я – твой проводник, ты – активный участник. Твоя жизнь – это ТВОЙ
-                            путь, и, взяв за неё ответственность, ты откроешь возможности для невероятных изменений.
-                        </span>
-                    </li>
-                </ul>
-                <p><span style="color: red">Да, и вот еще что:</span></p>
-                <p>
-                    Если ты не достаточно настрадался/настрадалась, если тебе еще не настолько плохо, что ты готов(а)
-                    терпеть, пить таблетки, ходить по врачам, фантазировать, что пройдет само, если у тебя есть желание,
-                    но нет <strong>намерения</strong> изменить свою жизнь,
-                </p>
+                    <!-- Текст -->
+                    <div class="content">
+                        <h2>Как мы будем работать:</h2>
+                        <br />
 
-                <p><em>то не заполняй заявку, не трать ни своё, ни моё время. </em><br /></p>
+                        <div class="container my-4">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-start">
+                                    <img
+                                        src="images/icons/icon1.png"
+                                        alt="Icon 1"
+                                        class="me-3"
+                                        width="40"
+                                        height="40" />
+                                    <div>
+                                        <h5 class="mb-1">Посмотри видео ⬆️⬆️⬆️</h5>
+                                        <p class="mb-0">Ответы на многие твои вопросы есть в видео.</p>
+                                    </div>
+                                </li>
 
-                <p>
-                    Если ты считаешь, что твоё избавление от панических атак больше нужно мне, чем тебе, то это не так!
-                </p>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <img
+                                        src="images/icons/icon2.png"
+                                        alt="Icon 2"
+                                        class="me-3"
+                                        width="40"
+                                        height="40" />
+                                    <div>
+                                        <h5 class="mb-1">Оставь заявку</h5>
+                                        <p class="mb-0">
+                                            Я свяжусь с тобой по указанным данным для уточнения даты и времени
+                                            проведения консультации.
+                                        </p>
+                                    </div>
+                                </li>
 
-                <p>Я тебе точно не помогу.</p>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <img
+                                        src="images/icons/icon3.png"
+                                        alt="Icon 3"
+                                        class="me-3"
+                                        width="40"
+                                        height="40" />
+                                    <div>
+                                        <h5 class="mb-1">Пройди бесплатную консультацию</h5>
+                                        <p class="mb-0">Проводится онлайн в Telegram, WhatsApp, Viber или Skype.</p>
+                                    </div>
+                                </li>
 
-                <p><span style="color: red">Кому я могу помочь:</span></p>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <img
+                                        src="images/icons/icon4.png"
+                                        alt="Icon 4"
+                                        class="me-3"
+                                        width="40"
+                                        height="40" />
+                                    <div>
+                                        <h5 class="mb-1">Возьми 100% ответственность за свою жизнь</h5>
+                                        <p class="mb-0">
+                                            Вместе мы работаем 50/50: я – твой проводник, ты – активный участник. Твоя
+                                            жизнь – это ТВОЙ путь, и, взяв за неё ответственность, ты откроешь
+                                            возможности для невероятных изменений.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
 
-                <ul>
-                    <li>
-                        <p>Тем, кто берёт ответственность за свою жизнь и готов действовать.</p>
-                    </li>
-                    <li>
+                        <p><span style="color: red; font-weight: bold">Да, и вот еще что:</span></p>
+
                         <p>
-                            Тем, кто твёрдо намерен навсегда избавиться от панических атак и состояний, которые
-                            ограничивают их свободу.
+                            Если ты не достаточно настрадался/настрадалась, если тебе еще не настолько плохо, что ты
+                            готов(а) терпеть, пить таблетки, ходить по врачам, фантазировать, что пройдет само, если у
+                            тебя есть желание, но нет <strong>намерения</strong> изменить свою жизнь,
                         </p>
-                    </li>
-                    <li>
-                        <p>Мечтает вернуться к активной, свободной и насыщенной жизни.</p>
-                    </li>
-                    <li>
-                        <p>Тем, кто не боится перемен и готов меняться ради лучшей жизни.</p>
-                    </li>
-                    <li>
+
+                        <p><em>то не заполняй заявку, не трать ни своё, ни моё время. </em><br /></p>
+
                         <p>
-                            Тем, кто понимает ценность профессиональной помощи и готов вкладывать силы, время и деньги в
-                            себя.
+                            Если ты считаешь, что твоё избавление от панических атак больше нужно мне, чем тебе, то это
+                            не так!
                         </p>
-                    </li>
-                </ul>
 
-                <h1 style="color: red">Запись на бесплатную консультацию</h1>
+                        <p>Я тебе точно не помогу.</p>
 
-                <iframe
-                    data-tally-src="https://tally.so/embed/w7J8pz?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-                    loading="lazy"
-                    width="100%"
-                    height="1081"
-                    title="Заявка на бесплатную консультацию"></iframe>
-                <script>
-                    var d = document,
-                        w = "https://tally.so/widgets/embed.js",
-                        v = function () {
-                            "undefined" != typeof Tally
-                                ? Tally.loadEmbeds()
-                                : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) {
-                                      e.src = e.dataset.tallySrc;
-                                  });
-                        };
-                    if ("undefined" != typeof Tally) v();
-                    else if (d.querySelector('script[src="' + w + '"]') == null) {
-                        var s = d.createElement("script");
-                        (s.src = w), (s.onload = v), (s.onerror = v), d.body.appendChild(s);
-                    }
-                </script>
+                        <p><span style="color: red; font-weight: bold">Кому я могу помочь:</span></p>
 
-                <div class="page-indicator">
-                    <small
-                        >Нажимая на кнопку, вы соглашаетесь с условиями о персональных данных и соглашаетесь c<br />
-                        <a href="privacy-policy.pdf">политикой конфиденциальности</a></small
-                    >
+                        <ul>
+                            <li>
+                                <p>Тем, кто берёт ответственность за свою жизнь и готов действовать.</p>
+                            </li>
+                            <li>
+                                <p>
+                                    Тем, кто твёрдо намерен навсегда избавиться от панических атак и состояний, которые
+                                    ограничивают их свободу.
+                                </p>
+                            </li>
+                            <li>
+                                <p>Мечтает вернуться к активной, свободной и насыщенной жизни.</p>
+                            </li>
+                            <li>
+                                <p>Тем, кто не боится перемен и готов меняться ради лучшей жизни.</p>
+                            </li>
+                            <li>
+                                <p>
+                                    Тем, кто понимает ценность профессиональной помощи и готов вкладывать силы, время и
+                                    деньги в себя.
+                                </p>
+                            </li>
+                        </ul>
+
+                        <h1 style="color: red">Запись на бесплатную консультацию</h1>
+
+                        <!-- Форма -->
+                        <form action="https://formsubmit.co/valarmorguliz@gmail.com" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Ваше имя</label>
+                                <input type="text" class="form-control" id="name" name="name" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Ваш номер телефона</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Ваш возраст</label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="age"
+                                    name="age"
+                                    min="1"
+                                    max="100"
+                                    required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Ваш e-mail</label>
+                                <input type="email" class="form-control" id="email" name="email" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="messenger" class="form-label">Мессенджер для связи с вами</label>
+                                <select class="form-select" id="messenger" name="messenger" required>
+                                    <option value="whatsapp">WhatsApp</option>
+                                    <option value="viber">Viber</option>
+                                    <option value="telegram">Telegram</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Из какого Вы города?</label>
+                                <input type="text" class="form-control" id="city" name="city" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="mental" class="form-label"
+                                    >Есть ли диагностированные психические заболевания? Если да, то какие?</label
+                                >
+                                <input type="text" class="form-control" id="mental" name="mental" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="importance" class="form-label"
+                                    >От 1 до 10, насколько Вам важно избавиться от панических атак?</label
+                                >
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="importance"
+                                    name="importance"
+                                    min="1"
+                                    max="10"
+                                    required />
+                            </div>
+                            <br />
+                            <!-- Кнопка с типом submit, стилизованная как .next-button -->
+                            <button type="submit" class="btn-container next-button">
+                                <span>Отправить заявку</span>
+                            </button>
+                            <br /><br />
+
+                            <!-- Оформление с использованием мелкого шрифта -->
+                            <p class="text-center" style="font-size: 0.8rem; color: #6c757d">
+                                Нажимая на кнопку, вы соглашаетесь с условиями <br />о персональных данных и
+                                соглашаетесь с<br />
+                                <a href="privacy-policy.pdf" target="_blank" style="text-decoration: none"
+                                    >политикой конфиденциальности</a
+                                >
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <footer>&copy; 2024 Стоп-Атака. Все права защищены.<br /></footer>
         </div>
 
-        <script>
-            // Получаем iframe
-            const iframe = document.querySelector(".responsive-iframe");
+        <!-- Футер -->
+        <div class="footer">
+            © 2024 Стоп-Атака | Все права защищены <br />
+            <a href="mailto:stopataka@gmail.com" class="email-link">stopataka@gmail.com</a>
+        </div>
 
-            // Функция для обновления высоты iframe
-            function resizeIframe() {
-                iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
-            }
-
-            // Слушаем загрузку и изменения внутри iframe
-            iframe.addEventListener("load", () => {
-                resizeIframe();
-
-                // Следим за изменениями высоты
-                const observer = new MutationObserver(resizeIframe);
-                observer.observe(iframe.contentDocument.body, { attributes: true, childList: true, subtree: true });
-            });
-        </script>
+        <!-- Подключение скриптов Bootstrap и собственного JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
