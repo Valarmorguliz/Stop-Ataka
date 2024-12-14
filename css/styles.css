@@ -12,6 +12,7 @@ img {
   -webkit-user-drag: none; /* Отключает перетаскивание изображений для Safari и старых версий Chrome */
 }
 
+
 .centered {
   display: block;
   margin: 20px auto;       /* Центрирование по горизонтали */
@@ -31,6 +32,19 @@ img {
 .content {
   padding: 30px 30px 10px 30px;
 }
+
+
+
+@media (max-width: 768px) {
+  .hero-image {
+    height: auto; /* Уменьшить высоту изображения на мобильных */
+  }
+  .content {
+    padding: 15px; /* Меньше отступов на мобильных */
+  }
+}
+
+
 
 /* Стиль для колонки с рамкой и тенью */
 .column-wrapper {
