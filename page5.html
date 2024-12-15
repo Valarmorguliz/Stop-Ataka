@@ -3,15 +3,35 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Пример страницы в стиле Bootstrap с картинкой, текстом и кнопкой" />
-        <meta name="author" content="Ваше имя" />
-        <title>Пример страницы</title>
+        <meta name="description" content="Узнай, как навсегда избавиться от панических атак за 8 недель с помощью проверенного плана. Пошаговое руководство, основанное на глубоком анализе эмоций и убеждений." />
+        <meta name="keywords" content="панические атаки, избавление от паники, стресс, эмоциональные блоки, психологическая помощь, самопомощь, преодоление страха, трансформация" />
+        <meta name="author" content="Стоп-Атака" />
+        <title>Как избавиться от панических атак за 8 недель | Стоп-Атака</title>
 
         <!-- Подключение стилей -->
         <link rel="stylesheet" href="css/styles.css" />
 
         <!-- Подключение стилей Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        
+        <!-- Структурированные данные для услуги -->
+        <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Service",
+          "name": "Консультация по избавлению от панических атак",
+          "description": "Пошаговый план для избавления от панических атак за 8 недель.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Стоп-Атака",
+            "contactPoint": {
+              "@type": "ContactPoint",              
+              "contactType": "customer service"
+            }
+          }
+        }
+        </script>
+        
     </head>
 
     <body>
@@ -149,7 +169,7 @@
 
                     <!-- Кнопка -->
                     <div class="btn-container">
-                        <a href="page6.html" class="next-button"><span>Хочу подробнее</span></a>
+                        <a href="page6.html" class="next-button" aria-label="Перейти на следующую страницу"><span>Хочу подробнее</span></a>
                     </div>
 
                     <!-- Информация о странице -->
@@ -163,7 +183,7 @@
         <!-- Футер -->
         <div class="footer">
             © 2024 Стоп-Атака | Все права защищены <br />
-            <a href="mailto:stopataka@gmail.com" class="email-link">stopataka@gmail.com</a>
+            <a href="mailto:stopataka@gmail.com" class="email-link" aria-label="Написать на stopataka@gmail.com" itemprop="email">stopataka@gmail.com</a>
         </div>
         
         <!-- Подключение скриптов Bootstrap и собственного JS -->

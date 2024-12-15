@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Пример страницы в стиле Bootstrap с картинкой, текстом и кнопкой" />
-    <meta name="author" content="Ваше имя" />
-    <title>Пример страницы</title>
+    <meta
+      name="description"
+      content="Узнайте, как победить панические атаки и вернуть контроль над своей жизнью. Алексей Солоницын — эксперт в холистической терапии сознания, предлагает уникальные методы избавления от панических атак." />
+    <meta name="author" content="Стоп-Атака" />
+    <title>Как избавиться от панических атак — Алексей Солоницын, сертифицированный эксперт</title>
 
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="css/styles.css" />
@@ -19,19 +21,23 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-5 column-wrapper">
           <!-- Изображение -->
-          <img src="images/3.jpg" alt="Пример изображения" class="hero-image rounded-3" />
+          <img
+            src="images/3.jpg"
+            alt="Алексей Солоницын помогает избавиться от панических атак"
+            class="hero-image rounded-3" />
 
           <!-- Текст -->
           <div class="content">
-            <h2>Кто я такой и почему я могу тебе помочь</h2>
+            <h2 itemprop="name">Кто я такой и почему я могу тебе помочь</h2>
             <br />
-            <p>Меня зовут <strong>Алексей Солоницын</strong></p>
+            <p>Меня зовут <strong itemprop="name">Алексей Солоницын</strong></p>
 
             <p>
-              Я — сертифицированный эксперт в области холистической терапии сознания, специалист American Academy of
-              Holistic Mind therapy, исследователь подсознательных процессов и их влияния на жизнь, нейропрактик,
-              создатель уникальных авторских программ "Возрождение жизни" и
-              <strong>"Стоп-Атака"</strong>, и онлайн курса "Старт к новой жизни".
+              Я — <span itemprop="jobTitle">сертифицированный эксперт в области холистической терапии сознания</span>,
+              специалист <span itemprop="affiliation"> American Academy of Holistic Mind therapy</span>, исследователь
+              подсознательных процессов и их влияния на жизнь, нейропрактик, создатель уникальных авторских программ
+              <span itemprop="makesOffer">"Возрождение жизни" и <strong>"Стоп-Атака"</strong></span
+              >, и онлайн курса <span itemprop="makesOffer">"Старт к новой жизни"</span>.
             </p>
             <p>
               <strong>Панические атаки знакомы мне не понаслышке</strong>— я видел, как страдали мои знакомые и близкие.
@@ -85,7 +91,7 @@
             </p>
 
             <!-- Изображение с центрированием -->
-            <img src="images/3_1.jpg" alt="Дополнительное изображение" class="centered" />
+            <img src="images/3_1.jpg" alt="Методы лечения панических атак" class="centered" />
 
             <p style="text-align: center">
               <strong>Панические атаки больше не должны управлять твоей жизнью.</strong>
@@ -96,7 +102,13 @@
 
           <!-- Кнопка -->
           <div class="btn-container">
-            <a href="page4.html" class="next-button"><span>Хочу подробнее</span></a>
+            <a
+              href="page4.html"
+              class="next-button"
+              aria-label="Узнать подробнее о методах избавления от панических атак"
+              itemprop="relatedLink"
+              ><span>Хочу подробнее</span></a
+            >
           </div>
 
           <!-- Информация о странице -->
@@ -110,7 +122,13 @@
     <!-- Футер -->
     <div class="footer">
       © 2024 Стоп-Атака | Все права защищены <br />
-      <a href="mailto:stopataka@gmail.com" class="email-link">stopataka@gmail.com</a>
+      <a
+        href="mailto:stopataka@gmail.com"
+        class="email-link"
+        aria-label="Написать на stopataka@gmail.com"
+        itemprop="email"
+        >stopataka@gmail.com</a
+      >
     </div>
 
     <!-- Подключение скриптов Bootstrap и собственного JS -->
