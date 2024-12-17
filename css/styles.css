@@ -30,6 +30,14 @@ h2 {
   color: #8c124b;
 }
 
+.content .boxed {
+    padding: 15px;
+    background-color: #faf6e6;
+    border: 2px solid #eeba2f;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* Стили для ссылок на почту */
 .footer a.email-link {
   color: #007bff;
