@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стоп-Атака - Избавление от панических атак</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Переопределение стилей Tilda */
+        #stop-ataka-wrapper * {
+            box-sizing: border-box !important;
+        }
+        #stop-ataka-wrapper {
+            --primary-color: #4A90A4;
+            --secondary-color: #87CEEB;
+            --accent-color: #6B9080;
+            --dark-color: #2C3E50;
+            --light-bg: #F8FAFB;
+            --white: #ffffff;
+            --text-dark: #34495E;
+            --text-light: #7F8C8D;
+            --success-color: #52B788;
+            --warning-color: #F39C12;
+        }
+        #stop-ataka-wrapper {
+            font-family: 'Inter', sans-serif !important;
+            color: #34495E !important;
+            line-height: 1.7 !important;
+            overflow-x: hidden;
+        }
+        #stop-ataka-wrapper p,
+        #stop-ataka-wrapper span,
+        #stop-ataka-wrapper div,
+        #stop-ataka-wrapper li {
+            color: inherit !important;
+        }
+        #stop-ataka-wrapper h1, 
+        #stop-ataka-wrapper h2, 
+        #stop-ataka-wrapper h3, 
+        #stop-ataka-wrapper h4, 
+        #stop-ataka-wrapper h5 {
+            font-family: 'Playfair Display', serif !important;
+            color: #2C3E50 !important;
+            font-weight: 600 !important;
+        }
+        /* ЗАЩИТА ОТ КОПИРОВАНИЯ */
+        #stop-ataka-wrapper {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+        #stop-ataka-wrapper input,
+        #stop-ataka-wrapper textarea {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+        #stop-ataka-wrapper img {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            user-drag: none !important;
+            pointer-events: none !important;
+        }
+        #stop-ataka-wrapper a,
+        #stop-ataka-wrapper button,
+        #stop-ataka-wrapper input,
+        #stop-ataka-wrapper textarea,
+        #stop-ataka-wrapper select,
+        #stop-ataka-wrapper label {
+            pointer-events: auto !important;
+        }
+        #stop-ataka-wrapper .btn-primary-custom {
+            background: linear-gradient(135deg, #4A90A4, #6B9080) !important;
+            border: none !important;
+            padding: 16px 40px !important;
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            border-radius: 50px !important;
+            color: #ffffff !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(74, 144, 164, 0.3) !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        #stop-ataka-wrapper .btn-primary-custom:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 25px rgba(74, 144, 164, 0.4) !important;
+            color: #ffffff !important;
+        }
+        #stop-ataka-wrapper .btn-outline-custom {
+            border: 2px solid #4A90A4 !important;
+            color: #4A90A4 !important;
+            padding: 14px 35px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            border-radius: 50px !important;
+            background: transparent !important;
+            transition: all 0.3s ease !important;
+        }
+        #stop-ataka-wrapper .btn-outline-custom:hover {
+            background: #4A90A4 !important;
+            color: #ffffff !important;
+        }
+        #stop-ataka-wrapper .btn-warning-custom {
+            background: linear-gradient(135deg, #F39C12, #E67E22) !important;
+            border: none !important;
+            padding: 16px 40px !important;
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            border-radius: 50px !important;
+            color: #ffffff !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3) !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        #stop-ataka-wrapper .btn-warning-custom:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 25px rgba(243, 156, 18, 0.4) !important;
+            color: #ffffff !important;
+        }
+        /* Header with Menu */
+        #stop-ataka-wrapper .top-header {
+            background: #ffffff !important;
+            padding: 15px 0 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 1000 !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        #stop-ataka-wrapper .header-content {
+            position: relative !important;
+            z-index: 2 !important;
+        }
+        
+        /* Добавляем отступ сверху для контента, чтобы он не скрывался под фиксированным хедером */
+        body {
+            margin-top: 90px !important;
+        }
+        
+        #stop-ataka-wrapper .logo {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 26px !important;
+            font-weight: 700 !important;
+            color: #4A90A4 !important;
+            text-decoration: none !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            white-space: nowrap !important;
+        }
+        #stop-ataka-wrapper .logo i {
+            font-size: 28px !important;
+            color: #4A90A4 !important;
+        }
+        #stop-ataka-wrapper .main-nav {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            flex-wrap: nowrap !important;
+        }
+        #stop-ataka-wrapper .main-nav li {
+            flex-shrink: 0 !important;
+        }
+        #stop-ataka-wrapper .main-nav li a {
+            color: #34495E !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            font-size: 14px !important;
+            transition: all 0.3s ease !important;
+            padding: 10px 18px !important;
+            border-radius: 25px !important;
+            background: rgba(74, 144, 164, 0.08) !important;
+            border: 1px solid rgba(74, 144, 164, 0.15) !important;
+            display: inline-block !important;
+            white-space: nowrap !important;
+        }
+        #stop-ataka-wrapper .main-nav li a:hover {
+            color: #4A90A4 !important;
+            background: rgba(74, 144, 164, 0.15) !important;
+            border-color: rgba(74, 144, 164, 0.3) !important;
+            transform: translateY(-1px) !important;
+        }
+        #stop-ataka-wrapper .main-nav li a.active {
+            color: #4A90A4 !important;
+            background: rgba(74, 144, 164, 0.15) !important;
+            border-color: #4A90A4 !important;
+        }
+        #stop-ataka-wrapper .header-buttons {
+            display: flex !important;
+            gap: 15px !important;
+            align-items: center !important;
+        }
+        #stop-ataka-wrapper .btn-header {
+            padding: 12px 28px !important;
+            font-size: 15px !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
+            text-decoration: none !important;
+            white-space: nowrap !important;
+        }
+        #stop-ataka-wrapper .btn-free {
+            background: linear-gradient(135deg, #52B788, #40916C) !important;
+            color: #ffffff !important;
+            border: none !important;
+        }
+        #stop-ataka-wrapper .btn-free:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 15px rgba(82, 183, 136, 0.4) !important;
+            color: #ffffff !important;
+        }
+        /* Mobile menu toggle */
+        #stop-ataka-wrapper .mobile-menu-toggle {
+            display: none !important;
+            background: none !important;
+            border: none !important;
+            font-size: 28px !important;
+            color: #4A90A4 !important;
+            cursor: pointer !important;
+        }
+        /* Header Layout */
+        #stop-ataka-wrapper .header-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 20px !important;
+        }
+        #stop-ataka-wrapper .header-nav-section {
+            display: flex !important;
+            align-items: center !important;
+            gap: 25px !important;
+            flex-grow: 1 !important;
+            justify-content: center !important;
+        }
+        @media (max-width: 1400px) {
+            #stop-ataka-wrapper .main-nav {
+                gap: 8px !important;
+            }
+            #stop-ataka-wrapper .main-nav li a {
+                padding: 9px 14px !important;
+                font-size: 13px !important;
+            }
+            #stop-ataka-wrapper .logo {
+                font-size: 22px !important;
+            }
+            #stop-ataka-wrapper .logo i {
+                font-size: 24px !important;
+            }
+        }
+        @media (max-width: 1200px) {
+            #stop-ataka-wrapper .main-nav li a {
+                padding: 8px 12px !important;
+                font-size: 12px !important;
+            }
+            #stop-ataka-wrapper .btn-header {
+                padding: 10px 20px !important;
+                font-size: 14px !important;
+            }
+        }
+        @media (max-width: 992px) {
+            #stop-ataka-wrapper .header-nav-section {
+                display: none !important;
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                background: white !important;
+                flex-direction: column !important;
+                padding: 20px !important;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1) !important;
+                gap: 15px !important;
+            }
+            #stop-ataka-wrapper .header-nav-section.active {
+                display: flex !important;
+            }
+            #stop-ataka-wrapper .main-nav {
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 10px !important;
+            }
+            #stop-ataka-wrapper .main-nav li {
+                width: 100% !important;
+            }
+            #stop-ataka-wrapper .main-nav li a {
+                width: 100% !important;
+                text-align: center !important;
+                padding: 12px 20px !important;
+                font-size: 15px !important;
+            }
+            #stop-ataka-wrapper .mobile-menu-toggle {
+                display: block !important;
+            }
+            #stop-ataka-wrapper .header-buttons {
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+            #stop-ataka-wrapper .btn-header {
+                width: 100% !important;
+                text-align: center !important;
+                padding: 12px 20px !important;
+                font-size: 15px !important;
+            }
+            #stop-ataka-wrapper .header-wrapper {
+                position: relative !important;
+            }
+            
+            /* Адаптивный отступ для мобильных устройств */
+            body {
+                margin-top: 75px !important;
+            }
+        }
+        /* Hero Section */
+        #stop-ataka-wrapper .hero-section {
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.05), rgba(107, 144, 128, 0.05)) !important;
+            padding: 100px 0 80px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        #stop-ataka-wrapper .hero-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -50% !important;
+            right: -10% !important;
+            width: 600px !important;
+            height: 600px !important;
+            background: radial-gradient(circle, rgba(135, 206, 235, 0.1), transparent) !important;
+            border-radius: 50% !important;
+        }
+        #stop-ataka-wrapper .urgent-badge {
+            background: linear-gradient(135deg, #E74C3C, #C0392B) !important;
+            color: #ffffff !important;
+            padding: 12px 30px !important;
+            border-radius: 50px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            display: inline-block !important;
+            margin-bottom: 25px !important;
+            animation: pulse 2s infinite !important;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        #stop-ataka-wrapper .hero-section h1 {
+            font-size: 52px !important;
+            line-height: 1.2 !important;
+            margin-bottom: 25px !important;
+            font-weight: 700 !important;
+            color: #2C3E50 !important;
+        }
+        #stop-ataka-wrapper .hero-section .lead {
+            font-size: 20px !important;
+            color: #7F8C8D !important;
+            margin-bottom: 35px !important;
+            line-height: 1.6 !important;
+        }
+        #stop-ataka-wrapper .hero-image {
+            border-radius: 20px !important;
+            overflow: hidden !important;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        #stop-ataka-wrapper .hero-image img {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+        }
+        /* Help Section */
+        #stop-ataka-wrapper .help-section {
+            padding: 80px 0 !important;
+            background: #ffffff !important;
+        }
+        #stop-ataka-wrapper .help-header {
+            background: linear-gradient(135deg, #4A90A4, #6B9080) !important;
+            color: #ffffff !important;
+            padding: 40px !important;
+            border-radius: 25px !important;
+            text-align: center !important;
+            margin-bottom: 50px !important;
+        }
+        #stop-ataka-wrapper .help-header h2 {
+            color: #ffffff !important;
+            font-size: 42px !important;
+            margin-bottom: 20px !important;
+        }
+        #stop-ataka-wrapper .help-header p {
+            color: #ffffff !important;
+        }
+        #stop-ataka-wrapper .help-list {
+            list-style: none !important;
+            padding: 0 !important;
+        }
+        #stop-ataka-wrapper .help-list li {
+            background: #F8FAFB !important;
+            padding: 30px !important;
+            border-radius: 15px !important;
+            margin-bottom: 20px !important;
+            border-left: 5px solid #4A90A4 !important;
+            font-size: 16px !important;
+            line-height: 1.8 !important;
+            color: #34495E !important;
+        }
+        /* Problem Section */
+        #stop-ataka-wrapper .problem-section {
+            padding: 80px 0 !important;
+            background: #F8FAFB !important;
+        }
+        #stop-ataka-wrapper .section-title {
+            text-align: center !important;
+            margin-bottom: 60px !important;
+        }
+        #stop-ataka-wrapper .section-title h2 {
+            font-size: 42px !important;
+            margin-bottom: 20px !important;
+            color: #2C3E50 !important;
+        }
+        #stop-ataka-wrapper .section-title p {
+            font-size: 18px !important;
+            color: #7F8C8D !important;
+            max-width: 700px !important;
+            margin: 0 auto !important;
+        }
+        #stop-ataka-wrapper .symptom-card {
+            background: #ffffff !important;
+            border-radius: 20px !important;
+            padding: 35px 30px !important;
+            margin-bottom: 25px !important;
+            border-left: 4px solid #4A90A4 !important;
+            transition: all 0.3s ease !important;
+        }
+        #stop-ataka-wrapper .symptom-card:hover {
+            transform: translateX(5px) !important;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08) !important;
+        }
+        #stop-ataka-wrapper .symptom-card i {
+            font-size: 28px !important;
+            color: #4A90A4 !important;
+            margin-bottom: 15px !important;
+        }
+        #stop-ataka-wrapper .symptom-card h4 {
+            font-size: 20px !important;
+            margin-bottom: 12px !important;
+            color: #2C3E50 !important;
+        }
+        #stop-ataka-wrapper .symptom-card p {
+            color: #7F8C8D !important;
+            margin: 0 !important;
+            font-size: 15px !important;
+        }
+        /* Ready to Help Section */
+        #stop-ataka-wrapper .ready-help-section {
+            padding: 80px 0 !important;
+            background: #ffffff !important;
+        }
+        #stop-ataka-wrapper .ready-help-box {
+            background: linear-gradient(135deg, rgba(82, 183, 136, 0.1), rgba(64, 145, 108, 0.1)) !important;
+            border: 3px solid #52B788 !important;
+            border-radius: 25px !important;
+            padding: 50px !important;
+            text-align: center !important;
+        }
+        #stop-ataka-wrapper .ready-help-box h2 {
+            font-size: 42px !important;
+            color: #52B788 !important;
+            margin-bottom: 25px !important;
+        }
+        #stop-ataka-wrapper .ready-help-box p {
+            color: #34495E !important;
+        }
+        /* About Section */
+        #stop-ataka-wrapper .about-section {
+            padding: 80px 0 !important;
+            background: #F8FAFB !important;
+        }
+        #stop-ataka-wrapper .about-image {
+            border-radius: 20px !important;
+            overflow: hidden !important;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1) !important;
+        }
+        #stop-ataka-wrapper .about-image img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+        #stop-ataka-wrapper .about-content h2 {
+            font-size: 38px !important;
+            margin-bottom: 25px !important;
+            color: #2C3E50 !important;
+        }
+        #stop-ataka-wrapper .about-content h3 {
+            font-size: 32px !important;
+            margin-top: 40px !important;
+            margin-bottom: 25px !important;
+            color: #4A90A4 !important;
+        }
+        #stop-ataka-wrapper .about-content p {
+            font-size: 17px !important;
+            color: #7F8C8D !important;
+            margin-bottom: 20px !important;
+        }
+        #stop-ataka-wrapper .credentials {
+            margin-top: 30px !important;
+        }
+        #stop-ataka-wrapper .credential-item {
+            display: flex !important;
+            align-items: start !important;
+            margin-bottom: 18px !important;
+            gap: 15px !important;
+        }
+        #stop-ataka-wrapper .credential-item i {
+            color: #52B788 !important;
+            font-size: 22px !important;
+            margin-top: 3px !important;
+        }
+        #stop-ataka-wrapper .credential-item span {
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            color: #34495E !important;
+        }
+        /* Subconscious Section */
+        #stop-ataka-wrapper .subconscious-section {
+            padding: 80px 0 !important;
+            background: #ffffff !important;
+        }
+        #stop-ataka-wrapper .subconscious-content {
+            max-width: 900px !important;
+            margin: 0 auto !important;
+        }
+        #stop-ataka-wrapper .subconscious-content h2 {
+            font-size: 38px !important;
+            margin-bottom: 30px !important;
+            text-align: center !important;
+            color: #2C3E50 !important;
+        }
+        #stop-ataka-wrapper .subconscious-content p {
+            font-size: 17px !important;
+            line-height: 1.9 !important;
+            margin-bottom: 25px !important;
+            color: #34495E !important;
+        }
+        #stop-ataka-wrapper .metaphor-box {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.1), rgba(230, 126, 34, 0.1)) !important;
+            border-left: 5px solid #F39C12 !important;
+            padding: 40px !important;
+            border-radius: 20px !important;
+            margin: 50px 0 !important;
+        }
+        #stop-ataka-wrapper .metaphor-box h3 {
+            color: #F39C12 !important;
+            font-size: 28px !important;
+            margin-bottom: 20px !important;
+        }
+        #stop-ataka-wrapper .metaphor-box p {
+            color: #34495E !important;
+        }
+        /* Process Section */
+        #stop-ataka-wrapper .process-section {
+            padding: 80px 0 !important;
+            background: #F8FAFB !important;
+        }
+        #stop-ataka-wrapper .process-step {
+            position: relative !important;
+            padding-left: 90px !important;
+            margin-bottom: 50px !important;
+        }
+        #stop-ataka-wrapper .step-number {
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 60px !important;
+            height: 60px !important;
+            background: linear-gradient(135deg, #4A90A4, #6B9080) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #ffffff !important;
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 5px 20px rgba(74, 144, 164, 0.3) !important;
+        }
+        #stop-ataka-wrapper .process-step h4 {
+            font-size: 22px !important;
+            margin-bottom: 12px !important;
+            color: #2C3E50 !important;
+        }
+        #stop-ataka-wrapper .process-step p {
+            color: #7F8C8D !important;
+            font-size: 16px !important;
+        }
+        /* Testimonials */
+        #stop-ataka-wrapper .testimonials-section {
+            padding: 80px 0 !important;
+            background: #ffffff !important;
+        }
+        #stop-ataka-wrapper .video-testimonials {
+            margin-top: 50px !important;
+        }
+        #stop-ataka-wrapper .video-testimonial-card {
+            background: #F8FAFB !important;
+            border-radius: 20px !important;
+            padding: 20px !important;
+            margin-bottom: 30px !important;
+            transition: all 0.3s ease !important;
+        }
+        #stop-ataka-wrapper .video-testimonial-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        }
+        #stop-ataka-wrapper .video-wrapper {
+            position: relative !important;
+            padding-bottom: 56.25% !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            border-radius: 15px !important;
+        }
+        #stop-ataka-wrapper .video-wrapper iframe {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            pointer-events: auto !important;
+        }
+        #stop-ataka-wrapper .video-title {
+            margin-top: 15px !important;
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            color: #2C3E50 !important;
+            text-align: center !important;
+        }
+        /* TEXT TESTIMONIALS (Screenshots) Section */
+        #stop-ataka-wrapper .text-testimonials-section {
+            padding: 80px 0 !important;
+            background: #F8FAFB !important;
+        }
+        #stop-ataka-wrapper .text-testimonials-section .section-title {
+            margin-bottom: 60px !important;
+        }
+        #stop-ataka-wrapper .testimonial-carousel-wrapper {
+            max-width: 900px !important;
+            margin: 0 auto !important;
+            position: relative !important;
+        }
+        #stop-ataka-wrapper .carousel-control-prev,
+        #stop-ataka-wrapper .carousel-control-next {
+            width: 60px !important;
+            height: 60px !important;
+            background: linear-gradient(135deg, #4A90A4, #6B9080) !important;
+            border-radius: 50% !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            opacity: 1 !important;
+            transition: all 0.3s ease !important;
+            pointer-events: auto !important;
+        }
+        #stop-ataka-wrapper .carousel-control-prev:hover,
+        #stop-ataka-wrapper .carousel-control-next:hover {
+            background: linear-gradient(135deg, #6B9080, #4A90A4) !important;
+            transform: translateY(-50%) scale(1.1) !important;
+        }
+        #stop-ataka-wrapper .carousel-control-prev {
+            left: -80px !important;
+        }
+        #stop-ataka-wrapper .carousel-control-next {
+            right: -80px !important;
+        }
+        #stop-ataka-wrapper .carousel-control-prev-icon,
+        #stop-ataka-wrapper .carousel-control-next-icon {
+            width: 30px !important;
+            height: 30px !important;
+        }
+        #stop-ataka-wrapper .carousel-indicators {
+            margin-bottom: -50px !important;
+        }
+        #stop-ataka-wrapper .carousel-indicators button {
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50% !important;
+            background-color: #4A90A4 !important;
+            opacity: 0.5 !important;
+            border: none !important;
+            margin: 0 5px !important;
+            pointer-events: auto !important;
+        }
+        #stop-ataka-wrapper .carousel-indicators button.active {
+            opacity: 1 !important;
+            background-color: #4A90A4 !important;
+        }
+        #stop-ataka-wrapper .screenshot-item {
+            padding: 20px !important;
+            background: #ffffff !important;
+            border-radius: 20px !important;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08) !important;
+            margin: 0 auto !important;
+            max-width: 600px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+        }
+        #stop-ataka-wrapper .screenshot-item:hover {
+            transform: scale(1.02) !important;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12) !important;
+        }
+        #stop-ataka-wrapper .screenshot-item img {
+            width: 100% !important;
+            height: auto !important;
+            border-radius: 15px !important;
+            display: block !important;
+            max-height: 700px !important;
+            object-fit: contain !important;
+            margin: 0 auto !important;
+        }
+        #stop-ataka-wrapper .zoom-hint {
+            text-align: center !important;
+            margin-top: 15px !important;
+            color: #7F8C8D !important;
+            font-size: 14px !important;
+        }
+        #stop-ataka-wrapper .zoom-hint i {
+            color: #4A90A4 !important;
+            margin-right: 8px !important;
+        }
+        /* Modal для увеличения изображения */
+        #stop-ataka-wrapper .screenshot-modal {
+            display: none !important;
+            position: fixed !important;
+            z-index: 9999 !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: rgba(0,0,0,0.95) !important;
+            padding: 20px !important;
+        }
+        #stop-ataka-wrapper .screenshot-modal.active {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        #stop-ataka-wrapper .modal-content-screenshot {
+            max-width: 90% !important;
+            max-height: 90% !important;
+            position: relative !important;
+        }
+        #stop-ataka-wrapper .modal-content-screenshot img {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 90vh !important;
+            object-fit: contain !important;
+            border-radius: 15px !important;
+            pointer-events: auto !important;
+        }
+        #stop-ataka-wrapper .modal-close {
+            position: absolute !important;
+            top: -50px !important;
+            right: 0 !important;
+            color: #ffffff !important;
+            font-size: 40px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+            pointer-events: auto !important;
+            background: none !important;
+            border: none !important;
+            width: 50px !important;
+            height: 50px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        #stop-ataka-wrapper .modal-close:hover {
+            color: #4A90A4 !important;
+            transform: rotate(90deg) !important;
+        }
+        @media (max-width: 992px) {
+            #stop-ataka-wrapper .carousel-control-prev {
+                left: 10px !important;
+            }
+            #stop-ataka-wrapper .carousel-control-next {
+                right: 10px !important;
+            }
+            #stop-ataka-wrapper .screenshot-item {
+                max-width: 100% !important;
+            }
+        }
+        @media (max-width: 768px) {
+            #stop-ataka-wrapper .carousel-control-prev,
+            #stop-ataka-wrapper .carousel-control-next {
+                width: 45px !important;
+                height: 45px !important;
+            }
+            #stop-ataka-wrapper .carousel-indicators {
+                margin-bottom: -40px !important;
+            }
+            #stop-ataka-wrapper .modal-close {
+                top: 10px !important;
+                right: 10px !important;
+                font-size: 30px !important;
+            }
+        }
+        /* Video Section */
+        #stop-ataka-wrapper .video-section {
+            padding: 80px 0 !important;
+            background: linear-gradient(135deg, #4A90A4, #6B9080) !important;
+            color: #ffffff !important;
+            text-align: center !important;
+        }
+        #stop-ataka-wrapper .video-section h2 {
+            color: #ffffff !important;
+            font-size: 42px !important;
+            margin-bottom: 20px !important;
+        }
+        #stop-ataka-wrapper .video-section p {
+            color: #ffffff !important;
+        }
+        #stop-ataka-wrapper .video-alert {
+            background: rgba(255,255,255,0.2) !important;
+            border: 3px solid white !important;
+            padding: 30px !important;
+            border-radius: 20px !important;
+            margin: 30px 0 !important;
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            animation: pulse 2s infinite !important;
+            color: #ffffff !important;
+        }
+        #stop-ataka-wrapper .main-video-wrapper {
+            max-width: 800px !important;
+            margin: 40px auto !important;
+            border-radius: 20px !important;
+            overflow: hidden !important;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+        }
+        /* Добавленные стили для Rutube видео */
+        #stop-ataka-wrapper .rutube-video-wrapper {
+            max-width: 800px !important;
+            margin: 40px auto !important;
+            border-radius: 20px !important;
+            overflow: hidden !important;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+        }
+        /* Who Can Help Section */
+        #stop-ataka-wrapper .who-help-section {
+            padding: 80px 0 !important;
+            background: #ffffff !important;
+        }
+        #stop-ataka-wrapper .cannot-help-box {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(192, 57, 43, 0.1)) !important;
+            border: 3px solid #E74C3C !important;
+            border-radius: 25px !important;
+            padding: 40px !important;
+            margin-bottom: 50px !important;
+        }
+        #stop-ataka-wrapper .cannot-help-box h2 {
+            color: #E74C3C !important;
+            font-size: 36px !important;
+            margin-bottom: 25px !important;
+        }
+        #stop-ataka-wrapper .cannot-help-box p {
+            color: #34495E !important;
+        }
+        #stop-ataka-wrapper .can-help-box {
+            background: linear-gradient(135deg, rgba(82, 183, 136, 0.1), rgba(64, 145, 108, 0.1)) !important;
+            border: 3px solid #52B788 !important;
+            border-radius: 25px !important;
+            padding: 40px !important;
+        }
+        #stop-ataka-wrapper .can-help-box h2 {
+            color: #52B788 !important;
+            font-size: 36px !important;
+            margin-bottom: 25px !important;
+        }
+        #stop-ataka-wrapper .can-help-list {
+            list-style: none !important;
+            padding: 0 !important;
+        }
+        #stop-ataka-wrapper .can-help-list li {
+            display: flex !important;
+            align-items: start !important;
+            gap: 15px !important;
+            margin-bottom: 20px !important;
+            font-size: 17px !important;
+            color: #34495E !important;
+        }
+        #stop-ataka-wrapper .can-help-list i {
+            color: #52B788 !important;
+            font-size: 24px !important;
+            margin-top: 3px !important;
+        }
+        /* Consultation Info Box */
+        #stop-ataka-wrapper .consultation-info-section {
+            padding: 80px 0 !important;
+            background: #F8FAFB !important;
+        }
+        #stop-ataka-wrapper .consultation-info-box {
+            background: white !important;
+            padding: 50px !important;
+            border-radius: 25px !important;
+            margin-top: 40px !important;
+            text-align: center !important;
+        }
+        #stop-ataka-wrapper .consultation-info-box h3 {
+            font-size: 32px !important;
+            margin-bottom: 25px !important;
+            color: #2C3E50 !important;
+        }
+        #stop-ataka-wrapper .consultation-info-box p {
+            font-size: 18px !important;
+            line-height: 1.8 !important;
+            color: #7F8C8D !important;
+        }
+        /* Contact Form Section */
+        #stop-ataka-wrapper .contact-section {
+            padding: 80px 0 !important;
+            background: #ffffff !important;
+        }
+        #stop-ataka-wrapper .contact-form {
+            background: white !important;
+            padding: 50px !important;
+            border-radius: 25px !important;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08) !important;
+        }
+        #stop-ataka-wrapper .contact-form h2 {
+            font-size: 36px !important;
+            margin-bottom: 15px !important;
+            text-align: center !important;
+            color: #2C3E50 !important;
+        }
+        #stop-ataka-wrapper .contact-form > p {
+            text-align: center !important;
+            color: #7F8C8D !important;
+            font-size: 17px !important;
+            margin-bottom: 40px !important;
+        }
+        #stop-ataka-wrapper .form-label {
+            color: #34495E !important;
+            font-weight: 500 !important;
+        }
+        #stop-ataka-wrapper .form-control-custom {
+            border: 2px solid #E8ECEF !important;
+            border-radius: 12px !important;
+            padding: 15px 20px !important;
+            font-size: 16px !important;
+            transition: all 0.3s ease !important;
+            color: #34495E !important;
+        }
+        #stop-ataka-wrapper .form-control-custom:focus {
+            border-color: #4A90A4 !important;
+            box-shadow: 0 0 0 0.2rem rgba(74, 144, 164, 0.1) !important;
+            outline: none !important;
+        }
+        #stop-ataka-wrapper .messenger-buttons {
+            display: flex !important;
+            gap: 15px !important;
+            margin-bottom: 20px !important;
+        }
+        #stop-ataka-wrapper .messenger-btn {
+            flex: 1 !important;
+            padding: 15px !important;
+            border: 2px solid #E8ECEF !important;
+            border-radius: 12px !important;
+            background: white !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            font-weight: 600 !important;
+            color: #34495E !important;
+        }
+        #stop-ataka-wrapper .messenger-btn input[type="radio"] {
+            margin: 0 !important;
+        }
+        #stop-ataka-wrapper .messenger-btn:hover {
+            border-color: #4A90A4 !important;
+            background: #F8FAFB !important;
+        }
+        #stop-ataka-wrapper .messenger-btn.active {
+            border-color: #4A90A4 !important;
+            background: rgba(74, 144, 164, 0.1) !important;
+        }
+        #stop-ataka-wrapper .video-confirmation {
+            background: rgba(243, 156, 18, 0.1) !important;
+            border: 2px solid #F39C12 !important;
+            padding: 20px !important;
+            border-radius: 12px !important;
+            margin-bottom: 20px !important;
+        }
+        #stop-ataka-wrapper .video-confirmation label {
+            font-weight: 600 !important;
+            color: #F39C12 !important;
+        }
+        #stop-ataka-wrapper .video-confirmation small {
+            color: #F39C12 !important;
+        }
+        #stop-ataka-wrapper .radio-group {
+            display: flex !important;
+            gap: 20px !important;
+            margin-top: 10px !important;
+        }
+        #stop-ataka-wrapper .radio-option {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            color: #34495E !important;
+        }
+        #stop-ataka-wrapper .form-check-label {
+            color: #34495E !important;
+        }
+        #stop-ataka-wrapper .form-check-label a {
+            color: #4A90A4 !important;
+        }
+        /* Footer */
+        #stop-ataka-wrapper .footer {
+            background: #2C3E50 !important;
+            color: rgba(255,255,255,0.8) !important;
+            padding: 50px 0 30px !important;
+        }
+        #stop-ataka-wrapper .footer h5 {
+            color: #ffffff !important;
+            font-size: 20px !important;
+            margin-bottom: 25px !important;
+        }
+        #stop-ataka-wrapper .footer p {
+            color: rgba(255,255,255,0.8) !important;
+        }
+        #stop-ataka-wrapper .footer ul {
+            list-style: none !important;
+            padding: 0 !important;
+        }
+        #stop-ataka-wrapper .footer ul li {
+            margin-bottom: 12px !important;
+            color: rgba(255,255,255,0.7) !important;
+        }
+        #stop-ataka-wrapper .footer ul li a {
+            color: rgba(255,255,255,0.7) !important;
+            text-decoration: none !important;
+            transition: color 0.3s !important;
+        }
+        #stop-ataka-wrapper .footer ul li a:hover {
+            color: #ffffff !important;
+        }
+        #stop-ataka-wrapper .footer ul li i {
+            color: rgba(255,255,255,0.7) !important;
+            margin-right: 8px !important;
+        }
+        #stop-ataka-wrapper .social-links {
+            display: flex !important;
+            gap: 15px !important;
+            margin-top: 20px !important;
+        }
+        #stop-ataka-wrapper .social-links a {
+            width: 45px !important;
+            height: 45px !important;
+            background: rgba(255,255,255,0.1) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #ffffff !important;
+            transition: all 0.3s ease !important;
+        }
+        #stop-ataka-wrapper .social-links a:hover {
+            background: #4A90A4 !important;
+            transform: translateY(-3px) !important;
+        }
+        #stop-ataka-wrapper .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1) !important;
+            margin-top: 40px !important;
+            padding-top: 25px !important;
+            text-align: center !important;
+            color: rgba(255,255,255,0.6) !important;
+        }
+        #stop-ataka-wrapper .footer-bottom p {
+            color: rgba(255,255,255,0.6) !important;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #stop-ataka-wrapper .fade-in-up {
+            animation: fadeInUp 0.8s ease-out !important;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            #stop-ataka-wrapper .hero-section h1 {
+                font-size: 36px !important;
+            }
+            #stop-ataka-wrapper .section-title h2 {
+                font-size: 32px !important;
+            }
+            #stop-ataka-wrapper .contact-form {
+                padding: 30px !important;
+            }
+            #stop-ataka-wrapper .messenger-buttons {
+                flex-direction: column !important;
+            }
+            #stop-ataka-wrapper .process-step {
+                padding-left: 70px !important;
+            }
+            #stop-ataka-wrapper .step-number {
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 20px !important;
+            }
+            #stop-ataka-wrapper .hero-section {
+                padding: 60px 0 50px !important;
+            }
+            #stop-ataka-wrapper .help-header h2 {
+                font-size: 32px !important;
+            }
+            #stop-ataka-wrapper .about-content h2 {
+                font-size: 32px !important;
+            }
+            #stop-ataka-wrapper .about-content h3 {
+                font-size: 26px !important;
+            }
+            #stop-ataka-wrapper .subconscious-content h2 {
+                font-size: 32px !important;
+            }
+            #stop-ataka-wrapper .metaphor-box h3 {
+                font-size: 24px !important;
+            }
+            #stop-ataka-wrapper .help-header,
+            #stop-ataka-wrapper .ready-help-box,
+            #stop-ataka-wrapper .cannot-help-box,
+            #stop-ataka-wrapper .can-help-box,
+            #stop-ataka-wrapper .consultation-info-box {
+                padding: 30px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="stop-ataka-wrapper">
+    <!-- Header with Navigation -->
+    <header class="top-header">
+        <div class="container header-content">
+            <div class="header-wrapper">
+                <a href="#" class="logo">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <span>Стоп-Атака</span>
+                </a>
+                <div class="header-nav-section" id="headerNavSection">
+                    <ul class="main-nav">
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#testimonials">Отзывы</a></li>
+                        <li><a href="#process">Онлайн курс</a></li>
+                        <li><a href="#testimonials">Примеры из практики</a></li>
+                        <li><a href="#about">Статистика</a></li>
+                        <li><a href="#video">Видео</a></li>
+                    </ul>
+                    <div class="header-buttons">
+                        <a href="#contact" class="btn-header btn-free">Бесплатная консультация</a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="fade-in-up">
+                        <div class="urgent-badge">
+                            <i class="fas fa-clock"></i> Только 5 мест на бесплатную консультацию в октябре
+                        </div>
+                        <h1>Готовы раз и навсегда попрощаться с паническими атаками?</h1>
+                        <p class="lead">Успейте записаться</p>
+                        <div class="mt-4">
+                            <a href="#contact" class="btn-primary-custom">Записаться на бесплатную консультацию</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="hero-image">
+                        <img src="https://static.tildacdn.com/tild3238-3833-4033-b565-353932333534/9.png?w=600&h=700&fit=crop" alt="Алексей Солоницын - специалист по паническим атакам">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Help Section -->
+    <section class="help-section">
+        <div class="container">
+            <div class="help-header">
+                <h2>Я знаю, как вам помочь!</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <p style="font-size: 18px; text-align: center; margin-bottom: 40px;">
+                        Моя программа <strong>"Стоп-Атака"</strong> гарантированно поможет достичь этой цели за 2 месяца без лекарств и больниц.
+                    </p>
+                    <div class="help-list">
+                        <li><i class="fas fa-heart" style="color: var(--primary-color); margin-right: 10px;"></i> Я помогу вам избавиться от страха смерти и кошмаров, чтобы вы могли наслаждаться жизнью.</li>
+                        <li><i class="fas fa-search" style="color: var(--primary-color); margin-right: 10px;"></i> Я помогу вам найти и устранить корень проблемы, чтобы вы могли жить свободно и счастливо.</li>
+                        <li><i class="fas fa-rocket" style="color: var(--primary-color); margin-right: 10px;"></i> Не откладывайте свое здоровье на потом - начните свой путь к благополучию уже сегодня!</li>
+                    </div>
+                    <div class="text-center mt-5">
+                        <a href="#contact" class="btn-primary-custom">Записаться на бесплатную консультацию</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Problem Section -->
+    <section class="problem-section" id="problem">
+        <div class="container">
+            <div class="section-title">
+                <h2>Если:</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="symptom-card">
+                        <i class="fas fa-heartbeat"></i>
+                        <p>Во время приступов вы испытываете одышку, нехватку воздуха, тошноту, озноб или горячие вспышки, головокружение, ощущение удушья, учащенное сердцебиение, боль или дискомфорт в груди, тремор, усиленное потоотделение, онемение или покалывание, у вас скачет давление, руки и ноги леденеют, от выброса адреналина происходит спазм сосудов, сильные мышечные боли. Вы чувствуете страх смерти или боитесь сойти с ума. Ощущение, что вы находитесь в каком-то нереальном, параллельном пространстве. Состояние, которое врагу не пожелаешь.</p>
+                    </div>
+                    <div class="symptom-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Вы живете в постоянном напряжении и страхе, ожидая очередной приступ. Вы часто чувствуете напряжение и страх, живя в постоянном ожидании следующей панической атаки. Вы пытаетесь подготовиться к ней, но она может случиться внезапно и в любой момент, что делает вашу жизнь невыносимой. С каждой новой атакой вы чувствуете, как ваш мир превращается в настоящий ад...</p>
+                    </div>
+                    <div class="symptom-card">
+                        <i class="fas fa-user-md"></i>
+                        <p>Врачи и специалисты только разводят руками и ничего не помогает. Возможно, вы уже несколько лет ищете способы избавиться от панических атак, обращаясь к врачам и специалистам, но ничего не помогает. Вы пробовали народные методы, йогу, медитации, аффирмации, спорт, массажи, дыхательные техники, но приступы все равно случаются. Вы обращались к психологам, психиатрам, астрологам, гадалкам и другим специалистам, но никто не смог помочь.</p>
+                    </div>
+                    <div class="symptom-card">
+                        <i class="fas fa-frown"></i>
+                        <p>Вы не живете полноценной счастливой жизнью. Вы не можете наслаждаться полноценной и счастливой жизнью, потому что тратите всё время и силы на борьбу со следствием, не найдя причину приступов. Вы вынуждены отказываться от важных событий, встреч и поездок, что вызывает у вас недовольство и разочарование. Ваши приступы могут вызывать у вас чувство неловкости или вины перед близкими, и возможно, вы сталкиваетесь с их непониманием. Более того, ваши отношения могут страдать из-за того, что партнер боится ваших приступов.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Ready to Help Section -->
+    <section class="ready-help-section">
+        <div class="container">
+            <div class="ready-help-box">
+                <h2>Я готов помочь вам!</h2>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    Запишитесь на бесплатную консультацию, где я помогу вам разобраться в том, что происходит внутри вас и как это влияет на вашу жизнь. Вместе мы выявим препятствия, мешающие вашему счастью, и найдем пути к их преодолению. Начните менять свою жизнь уже сегодня.
+                </p>
+                <div class="mt-4">
+                    <a href="#contact" class="btn-primary-custom">Записаться на бесплатную консультацию</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Обо мне</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="about-image">
+                        <img src="https://static.tildacdn.com/tild6263-6162-4432-a464-376335383662/Untitled-1.png" alt="Алексей Солоницын">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="about-content">
+                        <h3>Меня зовут Алексей Солоницын</h3>
+                        <p>Я — специалист по работе с подсознанием, сертифицированный эксперт в области холистической терапии сознания, специалист American Academy of Holistic Mind therapy, исследователь подсознательных процессов и их влияния на жизнь, нейропрактик, создатель уникальных авторских методик "Возрождение жизни" и "Стоп-Атака". И уникального онлайн курса "Старт к новой жизни".</p>
+                        <h3>Почему именно я?</h3>
+                        <div class="credentials">
+                            <div class="credential-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Панические атаки знакомы мне не понаслышке — я видел, как страдали мои близкие. Их боль и отсутствие результатов от традиционных методов лечения побудили меня искать выход.</span>
+                            </div>
+                            <div class="credential-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Нашел решение. Я нашел решение проблемы панических атак. Я искал подходящие инструменты в течение многих лет и нашел их, и теперь владею ими в совершенстве. Благодаря этому я смог помочь многим людям избавиться от панических атак.</span>
+                            </div>
+                            <div class="credential-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Готов помочь вам пройти трансформацию. Я готов стать вашим проводником на пути к изменениям, помогать и поддерживать. Но не забывайте: этот путь нужно пройти самому — это ваша уникальная трансформация.</span>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="#contact" class="btn-primary-custom">Записаться на бесплатную консультацию</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <p style="font-size: 17px; line-height: 1.9; color: var(--text-light);">
+                        Моя программа помогает избавиться от ограничений и страхов благодаря работе на уровне подсознания. Сеансы проходят дистанционно, через Skype, WhatsApp или Telegram, чтобы вы могли получать помощь из любой точки мира. Глубинная проработка гарантирует устойчивый и быстрый результат.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Subconscious Section -->
+    <section class="subconscious-section" id="subconscious">
+        <div class="container">
+            <div class="subconscious-content">
+                <h2>Подсознание как хранилище опыта и автоматических реакций</h2>
+                <p>Подсознание — это скрытая часть нашего разума, которая работает как огромный архив. В нём хранятся все переживания, эмоции, установки и автоматические реакции. Именно подсознание определяет, как мы реагируем на мир, иногда даже не осознавая этого.</p>
+                <p>Например, если в прошлом человек испытал страх в замкнутом пространстве, подсознание запоминает это как угрозу. Теперь каждый раз, когда он попадает в похожую ситуацию, тело автоматически реагирует: учащается сердцебиение, поднимается давление, он чувствует тревогу. Эта связь эмоций и тела формируется на уровне подсознания.</p>
+                <p>Подсознание тесно связано с чувствами. Оно формирует ассоциации: определённые события или мысли вызывают эмоции, а эмоции запускают физические реакции.</p>
+                <p>Например, если кто-то однажды испытал тревогу на мосту, подсознание закрепляет эту эмоцию. Теперь при любом воспоминании о мосту тело реагирует так, словно человек в опасности: мышцы напрягаются, начинается одышка, усиливается сердцебиение.</p>
+                <p>Подсознание действует быстро и не требует нашего сознательного участия. Оно связывает эмоции, вызванные триггером, с физическими ощущениями, готовя нас к действиям. Важно понимать, что это защитный механизм, но он может работать некорректно, вызывая дискомфорт без реальной угрозы.</p>
+                <p>Например, неприятный запах может подсознательно напомнить о каком-то болезненном моменте из прошлого. Человек может не осознавать этого, но его тело уже отреагирует: появится тошнота, напряжение или тревога. Так подсознание связывает чувства с физикой, защищая его от возможной угрозы.</p>
+                <div class="metaphor-box">
+                    <h3>А сейчас я попрошу вас включить образное мышление...</h3>
+                    <p>Представьте, что у вас дома постоянно пищит пожарная сигнализация, которая включается без причины, не давая спать и жить спокойно. Вы бегаете в темноте, нажимаете на все кнопки, ищете решение в интернете, вызываете мастеров, но она всё равно продолжает тревожить вас. Вы пытаетесь её отключить, вызываете специалистов, но никто не находит корень проблемы. А потом появляется человек, который сразу указывает на ошибку и устраняет её.</p>
+                    <p><strong>Вот так же я помогаю разобраться с вашей «внутренней сигнализацией», которая по ошибке запускает тревогу и страх.</strong></p>
+                    <p>Самое замечательное, что вам больше не нужно терять годы жизни в поисках решения, бегать по врачам или глотать таблетки с побочными эффектами.</p>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="#contact" class="btn-primary-custom">Записаться на бесплатную консультацию</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Process Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ваша трансформация за 8 недель: план, который действительно работает</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Понять истинную причину панических атак</h4>
+                        <p>Мы начинаем с того, чтобы выявить корень проблемы. Это не просто симптомы, а глубокие психологические механизмы, которые запускают приступы тревоги и паники. Вместо того чтобы лечить последствия, мы ищем и устраняем эти скрытые причины, позволяя вам избавиться от страха и снова жить свободно.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Разбор скрытых эмоций и страхов</h4>
+                        <p>Панические атаки часто являются следствием подавленных эмоций и невыраженных страхов. Мы выявим те чувства и переживания, которые могут быть «заперты» в подсознании и вызывают приступы. Когда вы научитесь их осознавать и правильно прорабатывать, атаки уйдут.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Процесс поиска и анализа глубинных убеждений</h4>
+                        <p>У каждого из нас есть убеждения, которые влияют на восприятие реальности и могут быть причиной паники. Возможно, вы боитесь потерять контроль или что случится что-то страшное. Мы разберём ваши убеждения и заменим их на новые, более здоровые, что позволит вам почувствовать себя в безопасности и покое.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Погружение в прошлое для осознания травм</h4>
+                        <p>Множество эмоциональных травм, которые мы получаем в детстве и юности, остаются незамеченными или подавленными, но они продолжают влиять на нас во взрослом возрасте. Мы начинаем с того, чтобы глубоко исследовать ваше прошлое, выявить моменты, когда вы пережили сильный стресс, боль или страх. Это важно, потому что понимание этих переживаний помогает освободиться от их негативного воздействия.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <h4>Проработка травм через осознание и выражение эмоций</h4>
+                        <p>Многие люди, пережившие травматичные события в детстве, учат себя подавлять эмоции, чтобы не чувствовать боль. Мы работаем над тем, чтобы вы могли безопасно и без стыда выразить свои эмоции, пережить те моменты, которые остались заблокированными. Это помогает восстановить внутренний баланс и освобождает от старых эмоциональных блоков.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">6</div>
+                        <h4>Переписывание прошлого через позитивные интерпретации</h4>
+                        <p>Даже если некоторые события были болезненными, важно научиться воспринимать их под другим углом. Мы вместе ищем новые, более здоровые и позитивные способы интерпретации прошлого. Это может включать принятие, прощение или понимание, что травмы не определяют вашу судьбу. Мы меняем отношение к тем событиям, которые ранее причиняли боль, и это открывает новые возможности для личного роста.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">7</div>
+                        <h4>Преодоление негативных паттернов, сформированных в детстве</h4>
+                        <p>Эмоциональные травмы часто приводят к тому, что мы бессознательно начинаем повторять определённые деструктивные паттерны поведения. Например, вы можете бессознательно избегать конфликтов, бояться отвержения или часто переживать о будущем. Мы анализируем эти паттерны и учим вас новым, здоровым реакциям, которые помогают избавиться от старых шаблонов.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">8</div>
+                        <h4>Преодоление родовых сценариев</h4>
+                        <p>Родовые сценарии могут влиять на нас гораздо сильнее, чем мы думаем. Эти неосознанные установки могут стать источником страха, беспокойства и даже панических атак. Работа с такими сценариями позволяет разобраться в том, какие убеждения и паттерны передаются через поколения, и как эти установки могут ограничивать вашу жизнь. Процесс трансформации этих сценариев даёт возможность освободиться от старых травм и жить более свободно и гармонично.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">9</div>
+                        <h4>Изменение убеждений: путь к восстановлению и внутренней гармонии</h4>
+                        <p>Старые убеждения — это как старые программные ошибки, которые влияют на наше восприятие мира и мешают жить полноценно. Когда мы заменяем эти убеждения, открывается пространство для новых возможностей и позитивных изменений. В процессе работы мы заменим старые убеждения, ограничивающие вашу свободу, на новые — более позитивные и ресурсные, которые открывают перед вами новые горизонты и возможности.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">10</div>
+                        <h4>Развитие внутренней уверенности и самостоятельности</h4>
+                        <p>Вместо того чтобы искать ответы у других, вы научитесь доверять своему внутреннему голосу и интуиции. Мы будем работать над тем, чтобы вы могли находить решения самостоятельно, принимая более осознанные и уверенные решения в жизни. Вы перестанете зависеть от мнений других людей, научитесь слушать себя и принимать те решения, которые действительно важны для вашего счастья.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">11</div>
+                        <h4>Онлайн-курс для избавления от панических атак</h4>
+                        <p>Моя программа включает в себя прохождение онлайн курса, специально разработанного для избавления от панических атак, состоящий из видеоуроков, практических занятий, полезных материалов и домашних заданий, которые помогут вам глубже понять механизмы возникновения панических атак и научиться справляться с ними, используя эффективные техники и практики.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#contact" class="btn-primary-custom">Записаться на бесплатную консультацию</a>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section (Video) -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы клиентов</h2>
+                <p>Видеоотзывы</p>
+            </div>
+            <div class="video-testimonials">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/vRe7kISWdyI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Илины</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/0zk-wumpV7M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Валерии</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/Z71CxkX579A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Дмитрия</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/9t22ivqLo5g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Марии</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/1-gpSKmMNYY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Веры</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/WS-WtR-1Eps" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Евгения</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/AvLuL16_ZyM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Николая</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/q3dSSRt8s40" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Людмилы</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="video-testimonial-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/zlaKV3jDpws" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-title">Видеоотзыв Павла</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== НОВАЯ СЕКЦИЯ: Текстовые отзывы (скриншоты) - 4 ИЗОБРАЖЕНИЯ ===== -->
+    <section class="text-testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы в мессенджерах</h2>
+                <p>Реальные отзывы наших клиентов</p>
+            </div>
+            <div class="testimonial-carousel-wrapper">
+                <div id="screenshotCarousel" class="carousel slide" data-bs-ride="false">
+                    <!-- Индикаторы (4 точки для 4 изображений) -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#screenshotCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#screenshotCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#screenshotCarousel" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#screenshotCarousel" data-bs-slide-to="3"></button>
+                    </div>
+                    <!-- Слайды с скриншотами (4 слайда) -->
+                    <div class="carousel-inner">
+                        <!-- Слайд 1 - ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ИЗОБРАЖЕНИЕ -->
+                        <div class="carousel-item active">
+                            <div class="screenshot-item" onclick="openScreenshotModal(this)">
+                                <img src="https://static.tildacdn.com/tild3734-3934-4832-a565-383462333666/_.png" alt="Отзыв 1">
+                                <div class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    Нажмите, чтобы увеличить
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Слайд 2 - ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ИЗОБРАЖЕНИЕ -->
+                        <div class="carousel-item">
+                            <div class="screenshot-item" onclick="openScreenshotModal(this)">
+                                <img src="https://static.tildacdn.com/tild3539-3530-4330-b830-643334653939/o1.jpg" alt="Отзыв 2">
+                                <div class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    Нажмите, чтобы увеличить
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Слайд 3 - ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ИЗОБРАЖЕНИЕ -->
+                        <div class="carousel-item">
+                            <div class="screenshot-item" onclick="openScreenshotModal(this)">
+                                <img src="https://static.tildacdn.com/tild3063-6465-4437-b037-626165646466/7.jpg" alt="Отзыв 3">
+                                <div class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    Нажмите, чтобы увеличить
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Слайд 4 - ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ИЗОБРАЖЕНИЕ -->
+                        <div class="carousel-item">
+                            <div class="screenshot-item" onclick="openScreenshotModal(this)">
+                                <img src="https://static.tildacdn.com/tild3161-3264-4665-b436-396565613832/photo.png" alt="Отзыв 4">
+                                <div class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    Нажмите, чтобы увеличить
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Стрелки навигации -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#screenshotCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Предыдущий</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#screenshotCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Следующий</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Модальное окно для увеличения изображения -->
+            <div class="screenshot-modal" id="screenshotModal">
+                <div class="modal-content-screenshot">
+                    <button class="modal-close" onclick="closeScreenshotModal()">&times;</button>
+                    <img id="modalScreenshotImage" src="" alt="Увеличенный отзыв">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Video Section -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <h2>Как мы будем работать:</h2>
+            <p style="font-size: 20px; margin-bottom: 20px;">Посмотрите видео на сайте</p>
+            <div class="video-alert">
+                <i class="fas fa-exclamation-circle"></i> ВИДЕО ОБЯЗАТЕЛЬНО К ПРОСМОТРУ!
+            </div>
+            <p style="font-size: 18px; margin-bottom: 40px;">Ответы на многие ваши вопросы есть в видео.</p>
+            <div class="main-video-wrapper">
+                <div class="video-wrapper">
+                    <!-- Замените YOUR_VIDEO_ID на ID вашего видео -->
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <h3 style="margin: 40px 0 20px 0; color: white;">Также доступно на Rutube</h3>
+            <div class="rutube-video-wrapper">
+                <div class="video-wrapper">
+                    <!-- Встраивание видео с Rutube -->
+                    <iframe src="https://rutube.ru/play/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="mt-5">
+                <a href="#contact" class="btn-warning-custom">Записаться на бесплатную консультацию</a>
+            </div>
+        </div>
+    </section>
+    <!-- Who Can Help Section -->
+    <section class="who-help-section" id="who-help">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cannot-help-box">
+                        <h2>Кому я не помогу:</h2>
+                        <p style="font-size: 17px; line-height: 1.8;">
+                            Тем, кто не достаточно настрадался, кому еще не настолько плохо, что готов терпеть, пить таблетки, ходить по врачам, фантазировать, что пройдет само, у кого есть желание, но нет намерения изменить свою жизнь, тем не стоит заполнять заявку, чтобы не тратить ни своё, ни моё время.
+                        </p>
+                        <p style="font-size: 17px; line-height: 1.8;">
+                            <strong>Если кто-то считает, что их избавление от панических атак больше нужно мне, чем им, то это не так! Я таким людям точно не помогу.</strong>
+                        </p>
+                    </div>
+                    <div class="can-help-box">
+                        <h2>Кому я могу помочь:</h2>
+                        <ul class="can-help-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Тем, кто берёт ответственность за свою жизнь и готов действовать.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Кто твёрдо намерен навсегда избавиться от панических атак и состояний, которые ограничивают их свободу.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Кто мечтает вернуться к активной, свободной и насыщенной жизни.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Кто не боится перемен и готов меняться ради лучшей жизни.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Кто понимает ценность профессиональной помощи и готов вкладывать силы, время и деньги в себя.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Consultation Info Section -->
+    <section class="consultation-info-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="help-header">
+                        <h2>Пройдите бесплатную консультацию</h2>
+                        <p style="font-size: 18px; line-height: 1.8; color: white; opacity: 0.95;">
+                            Проводится онлайн в Telegram, WhatsApp, Viber или Skype. Мы проведем подробный анализ вашей текущей ситуации (точка А) и обозначим цель (точка Б). Я проведу диагностику, чтобы найти препятствия на вашем пути, и вместе примем решение, подходит ли моя программа для достижения ваших целей.
+                        </p>
+                    </div>
+                    <div class="consultation-info-box">
+                        <h3>Возьмите 100% ответственность за свою жизнь</h3>
+                        <p>
+                            Программа "Стоп-Атака" — ваш путь к трансформации и ответственности за свою жизнь. За 8 недель с помощью уникальных техник, которые доказали свою эффективность, мы проработаем ваши внутренние установки через индивидуальные сессии и онлайн-курс, чтобы вы достигли своих целей и раскрыли потенциал.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Form Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <h2>Запись на бесплатную консультацию</h2>
+                        <p>Я свяжусь с Вами по указанным данным для уточнения даты и времени проведения консультации.</p>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Ваше имя *</label>
+                                    <input type="text" class="form-control form-control-custom" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="age" class="form-label">Ваш возраст *</label>
+                                    <input type="number" class="form-control form-control-custom" id="age" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Ваш номер WhatsApp / Viber / Telegram *</label>
+                                <input type="tel" class="form-control form-control-custom" id="phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Ваш EMAIL *</label>
+                                <input type="email" class="form-control form-control-custom" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Мессенджер для связи с вами *</label>
+                                <div class="messenger-buttons">
+                                    <label class="messenger-btn">
+                                        <input type="radio" name="messenger" value="whatsapp" required>
+                                        <i class="fab fa-whatsapp"></i> WhatsApp
+                                    </label>
+                                    <label class="messenger-btn">
+                                        <input type="radio" name="messenger" value="telegram" required>
+                                        <i class="fab fa-telegram"></i> Telegram
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Из какого Вы города? *</label>
+                                <input type="text" class="form-control form-control-custom" id="city" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="diagnosis" class="form-label">Есть ли диагностированные психические заболевания? Если да, то какие?</label>
+                                <textarea class="form-control form-control-custom" id="diagnosis" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="importance" class="form-label">От 1 до 10, насколько Вам важно избавиться от панических атак? *</label>
+                                <input type="number" class="form-control form-control-custom" id="importance" min="1" max="10" required>
+                            </div>
+                            <div class="video-confirmation mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-video"></i> Посмотрели ли вы видео? ⬆️⬆️⬆️
+                                    <br><small>(Обязательно к просмотру! Без просмотра видео консультация не состоится.)</small>
+                                </label>
+                                <div class="radio-group mt-2">
+                                    <label class="radio-option">
+                                        <input type="radio" name="video_watched" value="yes" required>
+                                        <span>Да</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="video_answer" class="form-label">Как вы ответили себе на вопрос из видео? *</label>
+                                <textarea class="form-control form-control-custom" id="video_answer" rows="4" required></textarea>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="agreement" required>
+                                <label class="form-check-label" for="agreement">
+                                    Нажимая на кнопку, вы соглашаетесь с условиями о персональных данных и соглашаетесь c <a href="#" target="_blank">политикой конфиденциальности</a>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn-primary-custom w-100">Записаться</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Стоп-Атака</h5>
+                    <p>Профессиональная помощь в преодолении панических атак. Авторская программа Алексея Солоницына.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                    <h5>Навигация</h5>
+                    <ul>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#testimonials">Отзывы</a></li>
+                        <li><a href="#process">Программа</a></li>
+                        <li><a href="#video">Видео</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                    <h5>Информация</h5>
+                    <ul>
+                        <li><a href="#problem">О проблеме</a></li>
+                        <li><a href="#subconscious">Подсознание</a></li>
+                        <li><a href="#who-help">Кому помогу</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5>Контакты</h5>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> stopataka@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; All Rights Reserved.</p>
+                <p class="small">Информация на сайте не является публичной офертой. Консультация не заменяет медицинскую помощь.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS + ЗАЩИТА ОТ КОПИРОВАНИЯ -->
+    <script>
+        // ========== ЗАЩИТА ОТ КОПИРОВАНИЯ ==========
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        document.addEventListener('selectstart', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
+        document.addEventListener('copy', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+                if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+                e.preventDefault();
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                return false;
+            }
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
+                e.preventDefault();
+                return false;
+            }
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        const images = document.querySelectorAll('#stop-ataka-wrapper img');
+        images.forEach(img => {
+            img.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                return false;
+            });
+        });
+        // ========== ФУНКЦИОНАЛ КАРУСЕЛИ СКРИНШОТОВ ==========
+        function openScreenshotModal(element) {
+            const imgSrc = element.querySelector('img').src;
+            const modal = document.getElementById('screenshotModal');
+            const modalImg = document.getElementById('modalScreenshotImage');
+            modalImg.src = imgSrc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeScreenshotModal() {
+            const modal = document.getElementById('screenshotModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        document.getElementById('screenshotModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeScreenshotModal();
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeScreenshotModal();
+            }
+        });
+        // ========== ОСНОВНОЙ ФУНКЦИОНАЛ САЙТА ==========
+        function toggleMobileMenu() {
+            const navSection = document.getElementById('headerNavSection');
+            navSection.classList.toggle('active');
+        }
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('headerNavSection').classList.remove('active');
+                }
+            });
+        });
+        document.querySelectorAll('.messenger-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.messenger-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const videoWatched = document.querySelector('input[name="video_watched"]:checked');
+            if (!videoWatched) {
+                alert('Пожалуйста, подтвердите, что вы посмотрели видео!');
+                return;
+            }
+            alert('Спасибо за заявку! Я свяжусь с вами в ближайшее время.');
+            this.reset();
+            document.querySelectorAll('.messenger-btn').forEach(b => b.classList.remove('active'));
+        });
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.symptom-card, .process-step, .video-testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        console.log('%c⛔ СТОП!', 'color: red; font-size: 60px; font-weight: bold;');
+        console.log('%cЭто функция браузера предназначена для разработчиков.', 'font-size: 20px;');
+    </script>
+</body>
+</html>
+
