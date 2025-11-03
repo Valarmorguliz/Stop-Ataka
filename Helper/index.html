@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ассистент расходов</title>
+  <meta name="theme-color" content="#2E7D32">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+      padding: 25px;
+      background: #f9f9f9;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #2E7D32;
+      margin-bottom: 30px;
+    }
+    button {
+      font-size: 1.3em;
+      padding: 16px 32px;
+      margin: 20px 0;
+      border: none;
+      border-radius: 14px;
+      background: #2E7D32;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    #status {
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎙️ Диктуйте расход</h1>
+  <button id="start">Начать запись</button>
+  <div id="status">Пример: «350 на обед» или «1200 рублей за продукты»</div>
+
+  <script>
+    // ← ВСТАВЬТЕ СЮДА ВАШ URL ИЗ APPS SCRIPT
+    const WEB_APP_URL = 'https://script.google.com/macros/s/ВАШ_URL/exec';
+
+    const startBtn = document.getElementById('start');
+    const statusEl = document.getElementById('status');
+
+    // Проверка поддержки SpeechRecognition
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      statusEl.innerHTML = '❌ Ваш браузер не поддерживает голосовой ввод. Используйте Chrome на Android.';
+    } else {
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'ru-RU';
+      recognition.interimResults = false;
+
+      startBtn.addEventListener('click', () => {
+        statusEl.textContent = '🎙️ Слушаю... Говорите чётко.';
+        recognition.start();
+      });
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript.trim();
+        statusEl.innerHTML = `Вы сказали: <b>"${transcript}"</b>`;
+
+        // Улучшенный парсинг: ищем число в начале или в середине
+        const match = transcript.match(/(\d+(?:\.\d+)?)/);
+        if (match) {
+          const amount = parseFloat(match[1]);
+          // Удаляем сумму из строки и очищаем остаток — это категория
+          let category = transcript.replace(match[0], '').replace(/рублей?|₽|на|за|\s+/g, ' ').trim();
+          category = category || 'прочее';
+
+          sendToSheet(amount, category, transcript);
+        } else {
+          statusEl.innerHTML += '<br>❌ Не найдена сумма. Скажите число.';
+        }
+      };
+
+      recognition.onerror = (event) => {
+        statusEl.innerHTML = `❌ Ошибка: ${event.error}`;
+        if (event.error === 'not-allowed') {
+          statusEl.innerHTML += '<br>Разрешите микрофон в настройках браузера.';
+        }
+      };
+    }
+
+    async function sendToSheet(amount, category, comment) {
+      try {
+        // Google Apps Script с no-cors не возвращает тело, но запрос проходит
+        await fetch(WEB_APP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount, category, comment })
+        });
+        statusEl.innerHTML = `✅ Записано!<br><b>${amount} ₽</b> — ${category}`;
+      } catch (err) {
+        statusEl.innerHTML = `❌ Ошибка отправки: ${err.message}`;
+      }
+    }
+  </script>
+</body>
+</html>
