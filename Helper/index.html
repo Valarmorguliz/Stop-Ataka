@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ассистент расходов</title>
+  <title>Ассистент доходов и расходов</title>
   <meta name="theme-color" content="#2E7D32">
   <link rel="manifest" href="manifest.json">
   <style>
@@ -44,12 +44,12 @@
   </style>
 </head>
 <body>
-  <h1>🎙️ Диктуйте расход</h1>
+  <h1>🎙️ Диктуйте доход или расход</h1>
   <button id="start">Начать запись</button>
-  <div id="status">Пример: «350 на обед» или «1200 рублей за продукты»</div>
+  <div id="status">Примеры:<br>«расход 300 на кофе»<br>«доход 50000 зарплата»</div>
 
   <script>
-    // 🔴 ВАЖНО: вставьте ваш реальный URL здесь!
+    // 🔴 ВАЖНО: ваш рабочий URL (уже вставлен)
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx8K8NKtvJr6FejmN7qwUzHQm8rjCOdVKR0SyGI14sl7JnfjA3Ui3CxYL_AmUMwCP9k/exec';
 
     const startBtn = document.getElementById('start');
@@ -57,14 +57,14 @@
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      statusEl.innerHTML = '❌ Ваш браузер не поддерживает голосовой ввод. Используйте Chrome на Android.';
+      statusEl.innerHTML = '❌ Голосовой ввод доступен только в Chrome (Android/ПК).';
     } else {
       const recognition = new SpeechRecognition();
       recognition.lang = 'ru-RU';
       recognition.interimResults = false;
 
       startBtn.addEventListener('click', () => {
-        statusEl.textContent = '🎙️ Слушаю... Говорите чётко.';
+        statusEl.innerHTML = '🎙️ Слушаю... Говорите чётко.';
         recognition.start();
       });
 
@@ -72,32 +72,73 @@
         const transcript = event.results[0][0].transcript.trim();
         statusEl.innerHTML = `Вы сказали: <b>"${transcript}"</b>`;
 
-        const match = transcript.match(/(\d+(?:\.\d+)?)/);
-        if (match) {
-          const amount = parseFloat(match[1]);
-          let category = transcript.replace(match[0], '').replace(/рублей?|₽|на|за|\s+/g, ' ').trim();
-          category = category || 'прочее';
-          sendToSheet(amount, category);
+        const lower = transcript.toLowerCase();
+        let type;
+
+        // Определяем тип операции
+        if (
+          lower.startsWith('доход') ||
+          lower.startsWith('доходы') ||
+          lower.includes('получил') ||
+          lower.includes('зарплата') ||
+          lower.includes('поступление') ||
+          lower.includes('аванс')
+        ) {
+          type = 'income';
+        } else if (
+          lower.startsWith('расход') ||
+          lower.startsWith('расходы') ||
+          lower.includes('потратил') ||
+          lower.includes('купил') ||
+          lower.includes('оплатил') ||
+          lower.includes('снял')
+        ) {
+          type = 'expense';
         } else {
-          statusEl.innerHTML += '<br>❌ Не найдена сумма. Скажите число.';
+          // По умолчанию — расход
+          type = 'expense';
         }
+
+        // Ищем сумму
+        const match = transcript.match(/(\d+(?:\.\d+)?)/);
+        if (!match) {
+          statusEl.innerHTML += '<br>❌ Не найдена сумма. Скажите число.';
+          return;
+        }
+
+        const amount = parseFloat(match[1]);
+
+        // Удаляем служебные слова и сумму, оставляем категорию
+        let clean = transcript
+          .replace(/(доходы?|расходы?|получил|потратил|купил|оплатил|снял|зарплата|аванс|поступление|рублей?|₽)/gi, '')
+          .replace(match[0], '')
+          .replace(/\s+/g, ' ')
+          .trim();
+
+        const category = clean || 'прочее';
+
+        sendToSheet(type, amount, category);
       };
 
       recognition.onerror = (event) => {
-        statusEl.innerHTML = `❌ Ошибка: ${event.error}`;
+        statusEl.innerHTML = `❌ Ошибка распознавания: ${event.error}`;
+        if (event.error === 'not-allowed') {
+          statusEl.innerHTML += '<br>Разрешите микрофон в настройках браузера.';
+        }
       };
     }
 
-    async function sendToSheet(amount, category) {
+    async function sendToSheet(type, amount, category) {
       try {
-        const url = `${WEB_APP_URL}?amount=${encodeURIComponent(amount)}&category=${encodeURIComponent(category)}`;
-        statusEl.innerHTML = 'Отправляю...';
+        const url = `${WEB_APP_URL}?type=${encodeURIComponent(type)}&amount=${encodeURIComponent(amount)}&category=${encodeURIComponent(category)}`;
+        statusEl.innerHTML = 'Отправляю данные в таблицу...';
 
         const response = await fetch(url);
         const result = await response.json();
 
         if (result.status === 'ok') {
-          statusEl.innerHTML = `✅ Записано!<br><b>${amount} ₽</b> — ${result.category}`;
+          const label = type === 'income' ? '✅ 💰 Доход' : '✅ 💳 Расход';
+          statusEl.innerHTML = `${label} записан!<br><b>${amount} ₽</b> — ${result.category}<br>Лист: ${result.sheet}`;
         } else {
           statusEl.innerHTML = `❌ Ошибка: ${result.error || 'сервер не ответил'}`;
         }
