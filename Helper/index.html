@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ассистент расходов</title>
   <meta name="theme-color" content="#2E7D32">
+  <link rel="manifest" href="manifest.json">
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -48,13 +49,12 @@
   <div id="status">Пример: «350 на обед» или «1200 рублей за продукты»</div>
 
   <script>
-    // ← ВСТАВЬТЕ СЮДА ВАШ URL ИЗ APPS SCRIPT
-    const WEB_APP_URL = 'https://script.google.com/macros/s/ВАШ_URL/exec';
+    // 🔴 ВАЖНО: вставьте ваш реальный URL здесь!
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx8K8NKtvJr6FejmN7qwUzHQm8rjCOdVKR0SyGI14sl7JnfjA3Ui3CxYL_AmUMwCP9k/exec';
 
     const startBtn = document.getElementById('start');
     const statusEl = document.getElementById('status');
 
-    // Проверка поддержки SpeechRecognition
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
       statusEl.innerHTML = '❌ Ваш браузер не поддерживает голосовой ввод. Используйте Chrome на Android.';
@@ -72,15 +72,12 @@
         const transcript = event.results[0][0].transcript.trim();
         statusEl.innerHTML = `Вы сказали: <b>"${transcript}"</b>`;
 
-        // Улучшенный парсинг: ищем число в начале или в середине
         const match = transcript.match(/(\d+(?:\.\d+)?)/);
         if (match) {
           const amount = parseFloat(match[1]);
-          // Удаляем сумму из строки и очищаем остаток — это категория
           let category = transcript.replace(match[0], '').replace(/рублей?|₽|на|за|\s+/g, ' ').trim();
           category = category || 'прочее';
-
-          sendToSheet(amount, category, transcript);
+          sendToSheet(amount, category);
         } else {
           statusEl.innerHTML += '<br>❌ Не найдена сумма. Скажите число.';
         }
@@ -88,24 +85,24 @@
 
       recognition.onerror = (event) => {
         statusEl.innerHTML = `❌ Ошибка: ${event.error}`;
-        if (event.error === 'not-allowed') {
-          statusEl.innerHTML += '<br>Разрешите микрофон в настройках браузера.';
-        }
       };
     }
 
-    async function sendToSheet(amount, category, comment) {
+    async function sendToSheet(amount, category) {
       try {
-        // Google Apps Script с no-cors не возвращает тело, но запрос проходит
-        await fetch(WEB_APP_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ amount, category, comment })
-        });
-        statusEl.innerHTML = `✅ Записано!<br><b>${amount} ₽</b> — ${category}`;
+        const url = `${WEB_APP_URL}?amount=${encodeURIComponent(amount)}&category=${encodeURIComponent(category)}`;
+        statusEl.innerHTML = 'Отправляю...';
+
+        const response = await fetch(url);
+        const result = await response.json();
+
+        if (result.status === 'ok') {
+          statusEl.innerHTML = `✅ Записано!<br><b>${amount} ₽</b> — ${result.category}`;
+        } else {
+          statusEl.innerHTML = `❌ Ошибка: ${result.error || 'сервер не ответил'}`;
+        }
       } catch (err) {
-        statusEl.innerHTML = `❌ Ошибка отправки: ${err.message}`;
+        statusEl.innerHTML = `❌ Ошибка сети: ${err.message}`;
       }
     }
   </script>
