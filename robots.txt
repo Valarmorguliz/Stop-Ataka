@@ -1,2 +1,6 @@
 User-agent: *
 Disallow: /privacy-policy.html
+Disallow: /consent.html
+Disallow: /cookies.html
+Disallow: /disclaimer.html
+Disallow: /privacy-policy.pdf
