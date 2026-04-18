@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://stopataka.solonicyn.ru/</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://stopataka.solonicyn.ru/images/1.jpg</image:loc>
+            <image:title>Как избавиться от панических атак за 8 недель</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://stopataka.solonicyn.ru/page2.html</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://stopataka.solonicyn.ru/images/2.jpg</image:loc>
+            <image:title>Истинная причина панических атак и тревожных расстройств</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://stopataka.solonicyn.ru/page3.html</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://stopataka.solonicyn.ru/images/3.jpg</image:loc>
+            <image:title>Механизм срабатывания панических атак</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://stopataka.solonicyn.ru/page4.html</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://stopataka.solonicyn.ru/images/4.jpg</image:loc>
+            <image:title>Подсознание как источник панических атак</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://stopataka.solonicyn.ru/page5.html</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://stopataka.solonicyn.ru/images/5.jpg</image:loc>
+            <image:title>Мой метод избавления от панических атак за 8 недель</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://stopataka.solonicyn.ru/page6.html</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://stopataka.solonicyn.ru/images/6.jpg</image:loc>
+            <image:title>История успеха помощи при панических атаках</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://stopataka.solonicyn.ru/page7.html</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+        <image:image>
+            <image:loc>https://stopataka.solonicyn.ru/images/7.jpg</image:loc>
+            <image:title>Запись на бесплатную консультацию по панических атаках</image:title>
+        </image:image>
+    </url>
+</urlset>

@@ -1,6 +1,19 @@
 User-agent: *
-Disallow: /privacy-policy.html
-Disallow: /consent.html
-Disallow: /cookies.html
-Disallow: /disclaimer.html
-Disallow: /privacy-policy.pdf
+Allow: /
+Disallow: /upgrade/
+Disallow: /Helper/
+
+# Оптимизация для изображений
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Yandexbot-Image
+Allow: /images/
+
+# Специально для Яндекса
+User-agent: Yandexbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap для поисковиков
+Sitemap: https://stopataka.solonicyn.ru/sitemap.xml
