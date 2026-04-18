@@ -8,9 +8,42 @@ document.addEventListener("DOMContentLoaded", function () {
         img.style.pointerEvents = "none";
     });
 
+    const applicationForm = document.getElementById('application-form');
+
+    // Функция для показа сообщения благодарности
+    function showThankYouMessage() {
+        applicationForm.style.display = 'none';
+        
+        const thankYouMessage = document.createElement('div');
+        thankYouMessage.style.cssText = `
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0;
+        `;
+        thankYouMessage.innerHTML = 'Спасибо! Вы уже подали заявку.<br><br>Один пользователь = одна консультация.';
+        applicationForm.parentNode.insertBefore(thankYouMessage, applicationForm);
+    }
+
+    // Проверяем, была ли форма уже отправлена
+    if (localStorage.getItem('formSubmitted') === 'true') {
+        showThankYouMessage();
+    }
+
     // Скрипт для обработки отправки формы
-    document.getElementById('application-form').addEventListener('submit', function(e) {
+    applicationForm.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Проверяем, не была ли форма уже отправлена
+        if (localStorage.getItem('formSubmitted') === 'true') {
+            alert('Ваша заявка уже была отправлена.');
+            return;
+        }
 
         const formData = new FormData(this);
 
@@ -23,7 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => {
             if (response.ok) {
-                window.location.href = 'page8.html'; // замените на URL следующей страницы
+                // Сохраняем флаг отправки в localStorage
+                localStorage.setItem('formSubmitted', 'true');
+                
+                // Показываем сообщение благодарности
+                showThankYouMessage();
             } else {
                 alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте ещё раз.');
             }
