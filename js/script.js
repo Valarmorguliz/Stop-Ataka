@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для показа сообщения благодарности
     function showThankYouMessage() {
+        if (!applicationForm) return; // Проверка, что форма существует
+        
         applicationForm.style.display = 'none';
         
         const thankYouMessage = document.createElement('div');
@@ -30,46 +32,69 @@ document.addEventListener("DOMContentLoaded", function () {
         applicationForm.parentNode.insertBefore(thankYouMessage, applicationForm);
     }
 
+    // Функция для безопасного теста localStorage
+    function getFormSubmittedStatus() {
+        try {
+            return localStorage.getItem('formSubmitted') === 'true';
+        } catch (e) {
+            // Safari Private Mode или другая блокировка localStorage
+            console.warn('localStorage недоступен:', e);
+            return false;
+        }
+    }
+
+    // Функция для безопасного сохранения в localStorage
+    function setFormSubmittedStatus() {
+        try {
+            localStorage.setItem('formSubmitted', 'true');
+        } catch (e) {
+            // Safari Private Mode или другая блокировка localStorage
+            console.warn('Не удалось сохранить статус:', e);
+        }
+    }
+
     // Проверяем, была ли форма уже отправлена
-    if (localStorage.getItem('formSubmitted') === 'true') {
+    if (applicationForm && getFormSubmittedStatus()) {
         showThankYouMessage();
     }
 
-    // Скрипт для обработки отправки формы
-    applicationForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+    // Скрипт для обработки отправки формы (только если форма существует)
+    if (applicationForm) {
+        applicationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        // Проверяем, не была ли форма уже отправлена
-        if (localStorage.getItem('formSubmitted') === 'true') {
-            alert('Ваша заявка уже была отправлена.');
-            return;
-        }
-
-        const formData = new FormData(this);
-
-        fetch('https://formspree.io/f/mnnqyedw', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+            // Проверяем, не была ли форма уже отправлена
+            if (getFormSubmittedStatus()) {
+                alert('Ваша заявка уже была отправлена.');
+                return;
             }
-        })
-        .then(response => {
-            if (response.ok) {
-                // Сохраняем флаг отправки в localStorage
-                localStorage.setItem('formSubmitted', 'true');
-                
-                // Показываем сообщение благодарности
-                showThankYouMessage();
-            } else {
+
+            const formData = new FormData(this);
+
+            fetch('https://formspree.io/f/mnnqyedw', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Сохраняем флаг отправки в localStorage
+                    setFormSubmittedStatus();
+                    
+                    // Показываем сообщение благодарности
+                    showThankYouMessage();
+                } else {
+                    alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте ещё раз.');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
                 alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте ещё раз.');
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-            alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте ещё раз.');
+            });
         });
-    });
+    }
 });
 
 // Отключение выделения текста через JavaScript
